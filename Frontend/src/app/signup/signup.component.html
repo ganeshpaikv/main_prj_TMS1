@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <!-- <mat-icon svgIcon="remotely"></mat-icon> -->
+    <!-- <img src=" ./assets/img/undraw_remotely_2j6y.svg" alt=""> -->
+
+    <div class="container login-container " style="height: 550px;">
+    <!-- <div class="row  P-2  "  > -->
+      <!-- <div class="col-lg-4"></div> -->
+      <!-- sign in form       -->
+      
+      <br>
+      <div class="col-lg-4  p-5 m-3 login-row rounded" >
+        <form class="row g-3" novalidate #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && signup()" >   
+            <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Signup</h2>
+            <span id="loginAlertMsg" *ngIf="SignUpError.error"><div style ='color: #D81B60;  padding:5px;'><h3 style=" text-align: center; font-family : cursive;">{{SignUpError.errorMsg}}</h3></div></span> 
+            <div class="col-md-12">
+                <label for="loginEmail" class="form-label">User Name</label><label class="form-label text-danger">&nbsp;* </label>
+                <span *ngIf="(email.invalid && (email.dirty || email.touched|| submitted))" class='balloonError'>
+                    <div *ngIf="email.errors?.required" >
+                        <p>Email is required</p>
+                      </div>
+                      <div *ngIf="email.errors?.pattern">
+                        <p>Invalid Email ID</p>
+                      </div>
+                </span>
+               <input type="text" class="form-control" name="b_email" id="loginEmail" #email="ngModel"  placeholder="Enter the Email ID" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" [(ngModel)]="User.emailaddress" required> 
+            </div>
+            <div class="col-md-12">
+              <label for="firstName" class="form-label">First Name</label><label class="form-label text-danger">&nbsp;* </label>
+              <span *ngIf="(fname.invalid && (fname.dirty || fname.touched|| submitted))" class='balloonError'>
+                <div *ngIf="fname.errors?.required" >
+                  <p>First name is required</p>
+                </div>
+              </span>
+             <input type="text" class="form-control" name="b_fname" id="fname" #fname="ngModel"  placeholder="Enter the First Name"  [(ngModel)]="User.firstname" required> 
+            </div>
+            <div class="col-md-12">
+              <label for="lastName" class="form-label">Last Name</label><label class="form-label text-danger">&nbsp;* </label>
+              <span *ngIf="(lname.invalid && (lname.dirty || lname.touched|| submitted))" class='balloonError'>
+                <div *ngIf="lname.errors?.required"  >
+                  <p>Last name is required</p>
+                </div>
+              </span>
+             <input type="text" class="form-control" name="b_lname" id="lname" #lname="ngModel"  placeholder="Enter the Last Name"  [(ngModel)]="User.lastname" required> 
+            </div>
+            <div class="col-md-12">
+                <label for="loginPassword" class="form-label">Password</label><label class="form-label text-danger">&nbsp;* </label>
+                <span *ngIf="(pwd.invalid && (pwd.dirty || pwd.touched|| submitted) ) " >
+                     <div *ngIf="pwd.errors?.required" class='balloonError'>
+                        <p>Password is required</p>
+                      </div>    
+                      <div *ngIf="pwd.invalid && (this.force==1) " class='balloonError'>
+                        <p style='color: red'>Weak Passsword</p>
+                      </div>
+                      <div *ngIf="pwd.invalid && (this.force==2) " class='balloonError'>
+                        <p style='color: red'>Weak Passsword</p>
+                      </div> 
+                      <div *ngIf="pwd.invalid && (this.force==3) " class='balloonWarning'>
+                        <p style='color: #FF7043'>Medium Strength Password</p>
+                      </div> 
+                      <!-- <div *ngIf="pwd.invalid && (this.force==4) " class='balloonStrong'>
+                        <p style='color: Green'>Strong Password</p>
+                      </div> -->
+                </span>
+                <span *ngIf="(pwd.valid && (pwd.dirty || pwd.touched|| submitted)) " >
+                  <div *ngIf="pwd.valid && (this.force==4) && PwdValidDis " class='balloonStrong'>
+                    <p style='color: Green'>Strong Password</p>
+                  </div>
+                </span>
+                <input type="password" class="form-control" name="b_pwd"  id="loginPassword" (keyup)='validatePasswordStrength()' (focusout)='PwdValidDis=false' placeholder="Enter the Password" minlength="8" pattern='((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})' #pwd="ngModel" [(ngModel)]="User.password" required>
+            </div>
+            <div class="col-md-12">
+                <label for="loginPassword" class="form-label"> Confirm Password</label><label class="form-label text-danger">&nbsp;* </label>
+                <span *ngIf=" (pwd2.invalid) && (pwd2.dirty || pwd2.touched|| submitted ) " class='balloonError'>
+                    <div *ngIf="pwd2.errors?.required" >
+                        <p>Password is required</p>
+                      </div>
+                      <div *ngIf="pwd2.errors?.minlength">
+                        <p>Password must be at least 8 characters long.</p>
+                      </div>
+                      <div *ngIf="pwd2.errors?.pattern">
+                        <p>Invalid password</p>
+                      </div>                  
+                </span>
+                <span *ngIf=" (pwd2.valid) && (!pwd2Valid) " class='balloonError'>
+                      <div *ngIf="!pwd2Valid">
+                        <p>password mismatch</p>
+                      </div>                      
+                </span>
+                <input type="password" class="form-control" name="b_pwd2"  id="loginPassword" (keyup)= 'validatePwd2($event)'   placeholder="Enter the Password" #pwd2='ngModel' minlength="8" [(ngModel)]="User.password2"  required>         
+            </div>
+           
+            <div class="form-group col-md-11 d-grid p-3 text-center">
+                <button type="submit" class="btn btn-primary " (mousedown)="submitted=true" >Signup</button>
+            </div>
+        </form> 
+      </div>
+      <div class="col-lg-2"></div>
+    </div>
+  <!-- </div> -->
+</div>
