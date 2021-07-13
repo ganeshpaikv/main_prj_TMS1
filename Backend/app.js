@@ -74,12 +74,11 @@ app.post('/signup',function(req,res){
       var query = {email: email, password: password};
 
       var item ={
-
-      
+          
       email: req.body.User.email,
       password: req.body.User.password
-      
-      }
+          
+            }
 
     
 
@@ -90,20 +89,21 @@ app.post('/signup',function(req,res){
           res.send('Invalid Credentials');
         else {
           console.log('Found!');
-          if(name=='admin@gmail.com'){
-            res.redirect('/admin');
+          if(req.body.User.email=='admin@gmail.com'){
+//             res.redirect('/admin');
 
           }
           else{
-            res.redirect('/user');
+//             res.redirect('/user');
 
           }
           
         }
 
 
-
-
+        });
+     
+     });
 
 
 app.listen(3000);//Server opening in port 3000//
