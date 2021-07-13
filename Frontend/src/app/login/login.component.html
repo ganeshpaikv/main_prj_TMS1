@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="container login-container rounded-circle " style="height: 535px;">
+    <!-- <div class="row  P-2  "  >
+      <div class="col-lg-4"></div> -->
+      <!-- sign in form -->      
+      <br>      
+      <br>
+      <div class="col-lg-4  p-5 m-3 login-row rounded" >
+        <form class="row g-3" novalidate #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login()" >   
+            <span id="loginAlertMsg" *ngIf="LoginError.error"><div style ='color: #D81B60;  padding:5px;'><h3 style=" text-align: center; font-family : cursive;">{{LoginError.errorMsg}}</h3></div></span> 
+            <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Login</h2>
+            <div class="col-md-12">
+                <label for="loginEmail" class="form-label">User Name</label><label class="form-label text-danger">&nbsp;* </label>
+                <span *ngIf="(email.invalid && (email.dirty || email.touched|| submitted))" class='balloonError'>
+                    <div *ngIf="email.errors?.required" >
+                        <p>Email is required</p>
+                      </div>
+                      <div *ngIf="email.errors?.pattern">
+                        <p>Invalid Email ID</p>
+                      </div>
+                </span>
+               <input type="text" class="form-control" name="b_email" id="loginEmail" #email="ngModel"  placeholder="Enter the Email ID" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" [(ngModel)]="User.emailaddress" required> 
+            </div>
+
+            <div class="col-md-12">
+                <label for="loginPassword" class="form-label">Password</label><label class="form-label text-danger">&nbsp;* </label>
+                <span *ngIf="(pwd.invalid && (pwd.dirty || pwd.touched|| submitted))" class='balloonError'>
+                    <div *ngIf="pwd.errors?.required" >
+                        <p>Password is required</p>
+                      </div>
+                      <div *ngIf="pwd.errors?.minlength">
+                        <p>Password must be at least 8 characters long.</p>
+                      </div>
+                      <div *ngIf="pwd.errors?.pattern">
+                        <p>Invalid password</p>
+                      </div>
+                </span>
+                <input type="password" class="form-control" name="b_pwd"  id="loginPassword" placeholder="Enter the Password" minlength="8" #pwd="ngModel" [(ngModel)]="User.password" required>
+            </div>
+            <div class="form-group col-md-11 d-grid p-3 text-center">
+                <button type="submit" class="btn btn-primary " (mousedown)="submitted=true" >login</button>
+            </div>
+        </form> 
+      <!-- </div> -->
+      <div class="col-lg-2"></div>
+    <!-- </div> -->
+  </div>
+  </div>

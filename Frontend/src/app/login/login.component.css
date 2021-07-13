@@ -1,0 +1,67 @@
+.container-fluid{
+   
+  background-size: cover;
+   /* background-color: #cccccc; */
+
+ 
+}
+.mat-icon{
+size: 500px;
+}
+.for{
+  position: relative;
+}
+.login-container
+{
+    height: 500 px;
+    /* background-color: #80DEEA; */
+    /* background-image: url('/assets/images/summer-nature-wallpaper-3_edited.png'); */
+    float: relative;
+    background-image: url('/assets/img/undraw_remotely_2j6y.svg');
+    image-resolution: 100%;
+    background-repeat: no-repeat;
+ 
+  }
+
+.login-img-height
+{
+    height: 25 rem;
+}
+
+.login-row
+{
+  background-color: #cce1e4;
+    height: 1500 px;
+    float: right;
+    /* background-color: #fff; */
+    padding: 30px;
+    border-radius: 80px;
+    box-shadow: 0px 0px 10px 0px #000; 
+}
+
+.balloonError {
+    display: table;
+    position: relative;
+    background-color: #F8E0E0;
+    color: #DF0101;
+    border: 2px solid #DF0101;
+    padding: 0 0.5em;
+    border-radius: 4px;
+    margin-bottom: 9px;
+  }
+  .balloonError::before, .balloon::after {
+    position: absolute;
+    content: "";
+    border: 10px solid transparent;
+    border-bottom-width: 0;
+    left: 30px;
+  }
+  .balloonError:before {
+    border-top-color: #DF0101;
+    top: 45px;
+  }
+  .balloonError:after {
+    border-top-color: #fff;
+    top: 25px;
+    z-index: 1;
+  }
