@@ -67,15 +67,15 @@ app.post('/signup',function(req,res){
 
 
  app.post('/login',function(req,res){
-      pass_hash = Bcrypt.hashSync(req.body.User.password, 10);
-      var email = req.body.User.email;
-      var password = req.body.User.password;
+      pass_hash = Bcrypt.hashSync(req.body.user.password, 10);
+      var email = req.body.user.email;
+      var password = req.body.user.password;
       var query = {email: email, password: password};
 
       var item ={
           
-      email: req.body.User.email,
-      password: req.body.User.password
+      email: req.body.user.email,
+      password: req.body.user.password
           
             }
 
@@ -88,7 +88,7 @@ app.post('/signup',function(req,res){
           res.send('Invalid Credentials');
         else {
           console.log('Found!');
-          if(req.body.User.email=='admin@gmail.com'){
+          if(req.body.user.email=='admin@gmail.com'){
 //             res.redirect('/admin');
 
           }
