@@ -13,7 +13,7 @@
             <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Signup</h2>
             <span id="loginAlertMsg" *ngIf="SignUpError.error"><div style ='color: #D81B60;  padding:5px;'><h3 style=" text-align: center; font-family : cursive;">{{SignUpError.errorMsg}}</h3></div></span> 
             <div class="col-md-12">
-                <label for="loginEmail" class="form-label">User Name</label><label class="form-label text-danger">&nbsp;* </label>
+                <label for="loginEmail" class="form-label">Email</label><label class="form-label text-danger">&nbsp;* </label>
                 <span *ngIf="(email.invalid && (email.dirty || email.touched|| submitted))" class='balloonError'>
                     <div *ngIf="email.errors?.required" >
                         <p>Email is required</p>

@@ -10,7 +10,7 @@
             <span id="loginAlertMsg" *ngIf="LoginError.error"><div style ='color: #D81B60;  padding:5px;'><h3 style=" text-align: center; font-family : cursive;">{{LoginError.errorMsg}}</h3></div></span> 
             <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Login</h2>
             <div class="col-md-12">
-                <label for="loginEmail" class="form-label">User Name</label><label class="form-label text-danger">&nbsp;* </label>
+                <label for="loginEmail" class="form-label">Email</label><label class="form-label text-danger">&nbsp;* </label>
                 <span *ngIf="(email.invalid && (email.dirty || email.touched|| submitted))" class='balloonError'>
                     <div *ngIf="email.errors?.required" >
                         <p>Email is required</p>
@@ -37,8 +37,9 @@
                 </span>
                 <input type="password" class="form-control" name="b_pwd"  id="loginPassword" placeholder="Enter the Password" minlength="8" #pwd="ngModel" [(ngModel)]="User.password" required>
             </div>
-            <div class="form-group col-md-11 d-grid p-3 text-center">
-                <button type="submit" class="btn btn-primary " (mousedown)="submitted=true" >login</button>
+            
+            <div class="form-group col-md-12 d-grid text-center">
+                <button type="submit" class="btn btn-primary " (mousedown)="submitted=true" >Login</button>
             </div>
         </form> 
       <!-- </div> -->
