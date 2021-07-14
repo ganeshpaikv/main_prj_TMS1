@@ -66,12 +66,43 @@ app.post('/signup',function(req,res){
   })
 
 
-       
- 
+ app.post('/login',function(req,res){
+      pass_hash = Bcrypt.hashSync(req.body.User.password, 10);
+      var email = req.body.User.email;
+      var password = req.body.User.password;
+      var query = {email: email, password: password};
+
+      var item ={
+          
+      email: req.body.User.email,
+      password: req.body.User.password
+          
+            }
+
+    
+
+       Userdata.findOne(query,function(err,user) {
+
+        if(err) throw new Error(err);
+        if(!user) 
+          res.send('Invalid Credentials');
+        else {
+          console.log('Found!');
+          if(req.body.User.email=='admin@gmail.com'){
+//             res.redirect('/admin');
+
+          }
+          else{
+//             res.redirect('/user');
+
+          }
+          
+        }
 
 
-
-
+        });
+     
+     });
 
 
 app.listen(3000);
