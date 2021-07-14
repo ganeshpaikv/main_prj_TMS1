@@ -9,11 +9,12 @@ import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  {path:'' , component:HomeComponent},
+  {path:'' , component:LoginComponent},
   {path:'admin' , canActivate:[AuthGuard], component:AdminComponent},
   {path:'user' , canActivate:[AuthGuard], component:UserComponent},
   {path:'login' , component:LoginComponent},
   {path:'signup' , component:SignupComponent},
+   {path:'home' , canActivate: [AuthGuard], component:HomeComponent},
 ];
 
 @NgModule({
