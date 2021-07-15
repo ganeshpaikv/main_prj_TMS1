@@ -30,29 +30,29 @@ const userrouter=require("./src/routes/userRoutes")()
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
 //signup call for backend//
 app.post('/signup',function(req,res){
-  pass_hash = Bcrypt.hashSync(req.body.User.password, 10); //password hashing//
+  pass_hash = Bcrypt.hashSync(req.body.user.password, 10); //password hashing//
   
-  Userdata.find({"email":req.body.User.email},(err,resp)=>{
+  Userdata.find({"email":req.body.user.email},(err,resp)=>{
       if(resp.length==0){
-          if(req.body.User.email=="admin@gmail.com")
+          if(req.body.User.email=="tmsadmn@gmail.com")
          { var item={
              
               password:pass_hash,
-             email:req.body.User.email,
+             email:req.body.user.email,
               userCategory:"admin"
           }}
           else{
               var item={
                   
                   password:pass_hash,
-                 email:req.body.User.email,
+                 email:req.body.user.email,
                   userCategory:"trainer"
               }
           }
           var User=Userdata(item);
           User.save();
 
-          res.send({message:"User registered successfully"});
+          res.send({message:""});
           
       }
       else{
