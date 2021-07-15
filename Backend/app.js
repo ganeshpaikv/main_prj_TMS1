@@ -65,17 +65,18 @@ app.post('/signup',function(req,res){
 
   })
 
+// login
 
  app.post('/login',function(req,res){
-      pass_hash = Bcrypt.hashSync(req.body.User.password, 10);
-      var email = req.body.User.email;
-      var password = req.body.User.password;
-      var query = {email: email, password: password};
+      pass_hash = Bcrypt.hashSync(req.body.user.password, 10);
+      var email = req.body.user.email;
+      var password = req.body.user.password;
+      var query = {email: email, password: pass_hash};
 
       var item ={
           
-      email: req.body.User.email,
-      password: req.body.User.password
+      email: req.body.user.email,
+      password: req.body.user.password
           
             }
 
