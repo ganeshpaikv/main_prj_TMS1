@@ -65,3 +65,11 @@ size: 500px;
     top: 25px;
     z-index: 1;
   }
+
+  #for1{
+    font-size: 16px;
+    text-align: center;
+    }
+    a{
+      text-decoration: none;
+    }
