@@ -34,7 +34,7 @@ app.post('/signup',function(req,res){
   
   Userdata.find({"email":req.body.user.email},(err,resp)=>{
       if(resp.length==0){
-          if(req.body.User.email=="tmsadmn@gmail.com")
+          if(req.body.user.email=="tmsadmn@gmail.com")
          { var item={
              
               password:pass_hash,
@@ -56,7 +56,7 @@ app.post('/signup',function(req,res){
           
       }
       else{
-          res.send({message:"User already registered.Please use different username"});
+          res.send({message:"User already registered.Please use different EmailId"});
           
       }
 

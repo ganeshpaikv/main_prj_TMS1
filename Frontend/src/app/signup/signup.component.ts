@@ -3,6 +3,7 @@ import { AuthService} from '../auth.service';
 import { Router} from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class SignupComponent implements OnInit {
 
   User= {
-    emailaddress: '',
+    email: '',
     password    : '',
     password2   : '',
     firstname   : '',
@@ -57,24 +58,21 @@ submitted : boolean=false;
   
   signup(){   
     this._auth.SignUpUser(this.User)
-    .subscribe(
-      res => {
-        console.log(res);
-        console.log('success registration');
-        this.SignUpError.errorMsg= '';
-        this.SignUpError.error = false;
-        this._router.navigate(['/login'])
-      },
-      err => {
-        console.log(err); 
-        console.log('faliure registration');         
-        this.SignUpError.errorMsg= err.error;
-        this.SignUpError.error = true;
-        ;
+    .subscribe((data) =>{
+      
+     
+      if(data.message!=""){
+        this.SignUpError.errorMsg=data.message;
+        this.SignUpError.error=true;
         
       }
-    ) 
+      else{
+       alert('User successfully registered');
+        this._router.navigate(['/login'])
+      }
+    })
   }
+  
 
 
  

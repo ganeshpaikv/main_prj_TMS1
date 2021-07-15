@@ -11,7 +11,7 @@
       <div class="col-lg-4  p-5 m-3 login-row rounded" >
         <form class="row g-3" novalidate #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && signup()" >   
             <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Signup</h2>
-            <span id="loginAlertMsg" *ngIf="SignUpError.error"><div style ='color: #D81B60;  padding:5px;'><h3 style=" text-align: center; font-family : cursive;">{{SignUpError.errorMsg}}</h3></div></span> 
+            <span id="loginAlertMsg" *ngIf="SignUpError.error"><div style ='color: #D81B60;  padding:5px;'><h5 style=" text-align: center; font-family : cursive;">{{SignUpError.errorMsg}}</h5></div></span> 
             <div class="col-md-12">
                 <label for="loginEmail" class="form-label">Email</label><label class="form-label text-danger">&nbsp;* </label>
                 <span *ngIf="(email.invalid && (email.dirty || email.touched|| submitted))" class='balloonError'>
@@ -22,7 +22,7 @@
                         <p>Invalid Email ID</p>
                       </div>
                 </span>
-               <input type="text" class="form-control" name="b_email" id="loginEmail" #email="ngModel"  placeholder="Enter the Email ID" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" [(ngModel)]="User.emailaddress" required> 
+               <input type="text" class="form-control" name="b_email" id="loginEmail" #email="ngModel"  placeholder="Enter the Email ID" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" [(ngModel)]="User.email" required> 
             </div>
             <div class="col-md-12">
               <label for="firstName" class="form-label">First Name</label><label class="form-label text-danger">&nbsp;* </label>
