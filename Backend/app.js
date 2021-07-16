@@ -41,7 +41,7 @@ app.post('/signup',function(req,res){
              email:req.body.user.email,
               userCategory:"admin"
           }}
-          else{
+          else{req.body.user.password
               var item={
                   
                   password:pass_hash,
@@ -71,25 +71,37 @@ app.post('/signup',function(req,res){
       pass_hash = Bcrypt.hashSync(req.body.user.password, 10);
       var email = req.body.user.email;
       var password = req.body.user.password;
-      var query = {email: email, password: pass_hash};
+//       var query = {email: email, password: pass_hash};
 
-      var item ={
+//       var item ={
           
-      email: req.body.user.email,
-      password: req.body.user.password
+//       email: req.body.user.email,
+//       password: req.body.user.password
           
-            }
+//             }
 
     
 
-       Userdata.findOne(query,function(err,user) {
+       Userdata.findOne(email,function(err,user) {
 
         if(err) throw new Error(err);
         if(!user) 
           res.send('Invalid Credentials');
         else {
+            bcrypt.compare(req.body.password, user.password, function(err, res) {
+                 if(err) throw new Error(err);
+                         }
+                 if (res)
+                 // Send JWT
+                 } 
+           else {
+             // response is OutgoingMessage object that server response http request
+        return response.json({success: false, message: 'passwords do not match'});
+                 }
+                });
           console.log('Found!');
-          if(req.body.User.email=='admin@gmail.com'){
+            
+          if(req.body.User.email=='tmsadmn@gmail.com'){
 //             res.redirect('/admin');
 
           }
