@@ -67,55 +67,49 @@ app.post('/signup',function(req,res){
 
 // login
 
- app.post('/login',function(req,res){
+ app.post('/login',function(req,res) {
       pass_hash = Bcrypt.hashSync(req.body.user.password, 10);
       var email = req.body.user.email;
-      var password = req.body.user.password;
-//       var query = {email: email, password: pass_hash};
-
-//       var item ={
-          
-//       email: req.body.user.email,
-//       password: req.body.user.password
-          
-//             }
-
-    
-
-       Userdata.findOne(email,function(err,user) {
-
-        if(err) throw new Error(err);
-        if(!user) 
-          res.send('Invalid Credentials');
-        else {
-            bcrypt.compare(req.body.password, user.password, function(err, res) {
-                 if(err) throw new Error(err);
-                         }
-                 if (res)
-                 // Send JWT
-                 } 
-           else {
-             // response is OutgoingMessage object that server response http request
-        return response.json({success: false, message: 'passwords do not match'});
-                 }
-                });
-          console.log('Found!');
-            
-          if(req.body.User.email=='tmsadmn@gmail.com'){
-//             res.redirect('/admin');
-
-          }
-          else{
-//             res.redirect('/user');
-
-          }
-          
-        }
-
-
-        });
      
-     });
+         Userdata.findOne(email,function(err,user) {
+
+             if(err) throw new Error(err);
+            if(!user) 
+               res.send('Invalid Credentials');
+               if(user){
+                bcrypt.compare(req.body.password, user.password, function(err, res) {
+                  if(err) throw new Error(err);
+                  if (res){
+                    let payload = {subject: username+password}
+                    let token = jwt.sign(payload, 'secretKey')
+                    res.status(200).send({token})
+                  }
+                  else{
+                    res.send('Invalid Credentials');
+                  }
+               });
+              }
+
+      });
+
+   });
+    
+   function verifyToken(req, res, next) {
+    if(!req.headers.authorization) {
+      return res.status(401).send('Unauthorized request')
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token === 'null') {
+      return res.status(401).send('Unauthorized request')    
+    }
+    let payload = jwt.verify(token, 'secretKey')
+    if(!payload) {
+      return res.status(401).send('Unauthorized request')    
+    }
+    req.userId = payload.subject
+    next()
+  }
+
 
 
 app.listen(3000);
