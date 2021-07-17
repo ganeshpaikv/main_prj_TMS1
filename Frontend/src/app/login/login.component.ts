@@ -11,7 +11,7 @@ export class LoginComponent implements OnInit {
 
  
   User= {
-    emailaddress: '',
+    email: '',
     password    : ''
 };
 
@@ -28,14 +28,15 @@ submitted =false;
 
   login(){   
       this._auth.loginUser(this.User)
-      .subscribe(
-        res => {
+      .subscribe(res=>{
           localStorage.setItem('token', res.token)          
-          localStorage.setItem('currentUser', res.users.firstname)
-          console.log(res);
-          this.LoginError.errorMsg= '';
-          this.LoginError.error = false;
+          //localStorage.setItem('currentUser', res.users.firstname)
+          
+          if (this.User.email=="tmsadmn@gmail.com")
           this._router.navigate(['/admin'])
+          else{
+            this._router.navigate(['/user'])
+          }
         },
         err => {
           console.log(err);          

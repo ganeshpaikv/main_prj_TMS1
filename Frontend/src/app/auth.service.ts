@@ -14,7 +14,7 @@ export class AuthService {
 
   loginUser(user:any)
   {
-    return this.http.post<any>(`http://localhost:3000/login`, user)
+    return this.http.post<any>('http://localhost:3000/login', {"user":user})
   }
 
   SignUpUser(user:any)

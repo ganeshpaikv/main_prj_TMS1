@@ -71,23 +71,24 @@ app.post('/signup',function(req,res){
       pass_hash = Bcrypt.hashSync(req.body.user.password, 10);
       var email = req.body.user.email;
      
-         Userdata.findOne(email,function(err,user) {
+         Userdata.findOne({email:email},function(err,user) {
 
              if(err) throw new Error(err);
             if(!user) 
-               res.send('Invalid Credentials');
+              { res.status(401).send('User not registered.Please sign up');}
                if(user){
-                bcrypt.compare(req.body.password, user.password, function(err, res) {
-                  if(err) throw new Error(err);
-                  if (res){
-                    let payload = {subject: username+password}
+                if(Bcrypt.compareSync(req.body.user.password, user.password))
+                  {
+                  
+                    let payload = {subject: req.body.email+req.body.password}
                     let token = jwt.sign(payload, 'secretKey')
                     res.status(200).send({token})
                   }
                   else{
-                    res.send('Invalid Credentials');
+                    res.status(401).send('Invalid credentials');
                   }
-               });
+                  
+              
               }
 
       });
