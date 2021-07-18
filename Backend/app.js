@@ -4,11 +4,27 @@ const Bcrypt=require('bcryptjs');
 const path=require('path');
 const cors=require('cors');
 const jwt=require('jsonwebtoken');
+const multer=require('multer');
 app.use(express.json());
 app.use(cors());
+
 app.use(express.urlencoded({extended:true}));
 const PORT=process.env.PORT||3000;
 const Userdata=require('./src/model/Userdata');
+const storage = multer.diskStorage({
+    
+  destination : function(req, file, cb) {
+      cb(null,path.join(__dirname,'../','Frontend/src/assets/img'));},
+     
+
+  // By default, multer removes file extensions so let's add them back
+  filename: function(req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
+      
+}
+  
+  
+}) ;  
 //Token function for verification//
 function verifyToken(req, res, next) {
     if(!req.headers.authorization) {
@@ -26,7 +42,7 @@ function verifyToken(req, res, next) {
     next()
   }
 //Router declarations//
-const userrouter=require("./src/routes/userRoutes")()
+const userrouter=require("./src/routes/userRoutes")(verifyToken,storage)
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
 //signup call for backend//
 app.post('/signup',function(req,res){

@@ -11,7 +11,7 @@
       <div class="col-lg-4  p-5 m-3 login-row rounded" >
         <form class="row g-3" novalidate #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && signup()" >   
             <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Signup</h2>
-            <span id="loginAlertMsg" *ngIf="SignUpError.error"><div style ='color: #D81B60;  padding:5px;'><h5 style=" text-align: center; font-family : cursive;">{{SignUpError.errorMsg}}</h5></div></span> 
+            <span id="loginAlertMsg" *ngIf="SignUpError.error"><div style ='color: #D81B60;'><h5 style=" text-align: left; font-family : cursive;">{{SignUpError.errorMsg}}</h5></div></span> 
             <div class="col-md-12">
                 <label for="loginEmail" class="form-label">Email</label><label class="form-label text-danger">&nbsp;* </label>
                 <span *ngIf="(email.invalid && (email.dirty || email.touched|| submitted))" class='balloonError'>
