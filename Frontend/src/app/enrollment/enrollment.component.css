@@ -1,0 +1,32 @@
+
+
+.container{
+    background-color: #ebe8f1;
+    height: 1500 px;
+    /* background-color: #fff; */
+   
+    border-radius: 60px;
+    box-shadow: 0px 0px 10px 0px #000; 
+
+}
+.for{
+    font-size: 40px;
+    font-weight:20px;
+    color: rgb(105, 27, 27);
+    text-align: center;
+
+}
+.form-group{
+    padding-top: 20px;
+    padding-left: 43%;
+    padding-right: 43%;
+}
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
+ng-select.ng-touched.ng-inavalid{
+    border: 1px solid red;
+}
+#for2.ng-touched.ng-invalid{
+    border: 1px solid red;
+}
