@@ -16,6 +16,9 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { FooterComponent } from './footer/footer.component';
+import { EnrollmentComponent } from './enrollment/enrollment.component';
+import { NgSelectModule } from '@ng-select/ng-select'; 
+import { TrainerService } from './trainer.service';
 
 
 @NgModule({
@@ -27,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     AdminComponent,
     FooterComponent,
-    UserComponent
+    UserComponent,
+    EnrollmentComponent
    
 
   ],
@@ -38,9 +42,10 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgSelectModule
   
   ],
-  providers: [AuthService, AuthGuard,
+  providers: [AuthService, AuthGuard, TrainerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
