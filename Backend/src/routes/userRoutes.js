@@ -6,7 +6,7 @@ const multer=require('multer');
 //const Bookdata=require('../model/Bookdata');
 function router(tokverify,storage){
     userrouter.post('/form',tokverify,(req,res)=>{
-        Trainerdata.find({"email":req.body.trainer.email},(err,resp)=>{
+        Trainerdata.find({"email":req.body.formData.email},(err,resp)=>{
             if(resp.length==0){
                  var num=Trainerdata.count();
                  let upload = multer({ storage: storage}).single();
@@ -25,15 +25,15 @@ function router(tokverify,storage){
                  } 
                else{
                        var item={
-                        name:req.body.trainer.name,
-                        email:req.body.trainer.email,
-                        phone:req.body.trainer.phone,
-                        address:req.body.trainer.address,
-                        qualification:req.body.trainer.qualification,
-                        skillset:req.body.trainer.skillset,
-                        company:req.body.trainer.company,
-                        designation:req.body.trainer.designation,
-                        ictakcourses:req.body.trainer.ictakcourses,
+                        name:req.body.formData.name,
+                        email:req.body.formData.email,
+                        phone:req.body.formData.phone,
+                        address:req.body.formData.address,
+                        qualification:req.body.formData.qualification,
+                        skillset:req.body.formData.skillset,
+                        company:req.body.formData.company,
+                        designation:req.body.formData.designation,
+                        ictakcourses:req.body.formData.ictakcourses,
                         photo:req.file.filename,
                         ID:'000'+String(num)
                  }
