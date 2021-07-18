@@ -1,0 +1,86 @@
+<br>
+<br>
+<div class="container">
+  <div class="container-fluid">
+  <br>
+  <br>
+  <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Trainer Enrollment Form</h2><br>
+<form class="row g-3"  #enrollmentForm="ngForm" (ngSubmit)="enrollmentForm.form.valid && verify(enrollmentForm)">
+  
+  <div class="col-md-4">
+    <label for="inputName" class="form-label">Name</label>
+    <input type="text" class="form-control"  name="name" [(ngModel)]="trainer.name" minlength="4" pattern="^[a-zA-Z\s]+$" required #name="ngModel" >
+    <small class="form-text text-muted" *ngIf="name.touched && !name.valid" class="form-label text-danger">Enter valid name</small>
+  </div>
+  <div class="col-md-4">
+    <label for="inputEmail" class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" [(ngModel)]="trainer.email" required >
+    <small class="form-text text-muted" *ngIf="email.touched && !email.valid" class="form-label text-danger">Enter valid email</small>
+  </div>
+  <div class="col-md-4">
+    <label for="inputPhoneno" class="form-label">Phone No</label>
+    <input type="phoneno" class="form-control" name="phone" pattern="^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$" length="10" [(ngModel)]="trainer.phone" #phone="ngModel" required>
+    <small class="form-text text-muted" *ngIf="phone.touched && !phone.valid" class="form-label text-danger">Enter valid phoneno</small>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" name="address" [(ngModel)]="trainer.address" minlength="12" #address="ngModel" required>
+    <small class="form-text text-muted" *ngIf="address.touched && !address.valid" class="form-label text-danger">Enter valid address</small>
+  </div>
+ 
+  <div class="col-md-6">
+    <label for="inputQualification" class="form-label">Highest Qualification</label>
+    <input type="text" class="form-control" name="qualification" [(ngModel)]="trainer.qualification" #qualification="ngModel" minlength="2" required>
+    <small class="form-text text-muted" *ngIf="qualification.touched && !qualification.valid" class="form-label text-danger">Enter highest qualification</small>
+  </div>
+  <div class="col-md-6">
+    <label for="inputSkillset" class="form-label">Skill set</label>
+    <input type="text" class="form-control" name="skillset" [(ngModel)]="trainer.skillset" #skillset="ngModel" required>
+    <small class="form-text text-muted" *ngIf="skillset.touched && !skillset.valid" class="form-label text-danger">Enter skill set</small>
+  </div>
+  <div class="col-md-6">
+    <label for="inputCompany" class="form-label">Current company name</label>
+    <input type="text" class="form-control" name="company" [(ngModel)]="trainer.company" #company="ngModel" required>
+    <small class="form-text text-muted" *ngIf="company.touched && !company.valid" class="form-label text-danger">Enter company name</small>
+  </div>
+  <div class="col-md-6">
+    <label for="inputDesignation" class="form-label">Current designation</label>
+    <input type="text" class="form-control" name="designation" [(ngModel)]="trainer.designation" #designation="ngModel" required>
+    <small class="form-text text-muted" *ngIf="designation.touched && !designation.valid" class="form-label text-danger">Enter designation</small>
+  </div>
+  <div class="col-md-12">
+    <label for="inputCourses" class="form-label">ICTAK Course handling</label>
+    <ng-select id="for2" [items]="categories"  
+               bindLabel="name"  
+               placeholder="Select Category" 
+               name="ictakcourses" 
+               appendTo="body"    
+               [multiple]="true"  
+               [(ngModel)]="trainer.ictakcourses"
+               #ictakcourses="ngModel"
+                required>  
+</ng-select>  
+<small class="form-text text-muted" *ngIf="ictakcourses.touched && !ictakcourses.valid" class="form-label text-danger">Select atleast one course</small>
+  </div>
+  <div class="col-md-6">
+    <label for="formFile" class="form-label">Photo</label>
+    <input class="form-control" type="file" name="photo" (change)="selectImage($event)" [(ngModel)]="trainer.photo" #photo="ngModel" required>
+    <small class="form-text text-muted" *ngIf="photo.touched && !photo.valid" class="form-label text-danger">upload photo</small>
+  </div>
+  <div class="col-md-6">
+    <label for="inputID" class="form-label">ID</label>
+    <input type="text" class="form-control" disabled name="ID" [(ngModel)]="trainer.ID" required>
+    
+  </div>
+  <br>
+  <br>
+  
+  <div class="form-group col-md-12 d-grid p-6 text-center">
+    <button type="submit" class="btn btn-primary" [disabled]="enrollmentForm.form.invalid">Submit</button>
+  </div>
+</form>
+<br><br>
+</div>
+</div>
+
+''

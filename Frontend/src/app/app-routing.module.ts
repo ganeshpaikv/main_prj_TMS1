@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
+import { EnrollmentComponent } from './enrollment/enrollment.component';
 
 const routes: Routes = [
   {path:'' , component:LoginComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'login' , component:LoginComponent},
   {path:'signup' , component:SignupComponent},
    {path:'home' , canActivate: [AuthGuard], component:HomeComponent},
+  { path: 'enrollment' , canActivate: [AuthGuard], component:EnrollmentComponent},
 ];
 
 @NgModule({
