@@ -22,11 +22,12 @@ export class TrainerService {
 
   constructor(public http : HttpClient) { }
 
-  newTrainer(image:any, trainer : any)
+  newTrainer(image:any, courses:any,trainer : any)
   {
-    console.log('insert trainer')
+    courses=JSON.stringify(courses);
     const formData = new FormData();
-    formData.append('file', image);  
+    formData.append('file', image);
+    formData.append('courselist', courses);   
     formData.append('name', trainer.name); 
     formData.append('email', trainer.email); 
     formData.append('phone', trainer.phone); 
@@ -38,8 +39,8 @@ export class TrainerService {
     formData.append('ictakcourses',  trainer.ictakcourses); 
     formData.append('photo', trainer.photo); 
     formData.append('ID', trainer.ID ); 
-    return this.http.post('http://localhost:3000/enrollment', formData)
-     .subscribe(data =>{console.log(data)});
+    return this.http.post<any>('http://localhost:3000/form',formData);
+    
   }
 
 }
