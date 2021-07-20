@@ -19,6 +19,12 @@ import { FooterComponent } from './footer/footer.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { NgSelectModule } from '@ng-select/ng-select'; 
 import { TrainerService } from './trainer.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -42,7 +48,12 @@ import { TrainerService } from './trainer.service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatDividerModule
   
   ],
   providers: [AuthService, AuthGuard, TrainerService,
