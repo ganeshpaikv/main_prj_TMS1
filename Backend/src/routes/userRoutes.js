@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended:true}));
 function router(tokverify,storage){
     coursedata='';
    id_final='';
-  
+        
     userrouter.post('/',tokverify,(req,res)=>{
       
         
@@ -31,19 +31,19 @@ function router(tokverify,storage){
                  
                upload(req, res,function(err) {
                 
-           // req.file contains information of uploaded file
+            // req.file contains information of uploaded file
             // req.body contains information of text fields, if there were any
             Trainerdata.find({"email":req.body.email},(err,resp)=>{
               if(resp.length==0){
                    if (!req.file) {
                 
-                      console.log('Please select an image to upload');
-                 }
-               else if(err){
-                      console.log(err);
-                } 
-             else{
-                objcourse=JSON.parse(req.body.courselist);
+                       console.log('Please select an image to upload');
+                  }
+                else if(err){
+                       console.log(err);
+                 } 
+               else{
+                objcourse=JSON.parse(req.body.ictakcourses);
                 for(i=0;i<objcourse.length;i++){
                     if(i==0){
                     coursedata=coursedata.concat(objcourse[i].name)}
@@ -53,7 +53,7 @@ function router(tokverify,storage){
                 }
                var value=Math.floor(Math.random()*1000);
                id_final='TN'+value.toString();
-             var item={
+                       var item={
                        name:req.body.name,
                       email:req.body.email,
                        phone:req.body.phone,
@@ -63,15 +63,15 @@ function router(tokverify,storage){
                       company:req.body.company,
                      designation:req.body.designation,
                       ictakcourses:coursedata,
-                      photo:req.file.filename,
+                        photo:req.file.filename,
                      ID:id_final
-               }
+                 }
               
-           var Trainer=Trainerdata(item);
-           Trainer.save();
+                var Trainer=Trainerdata(item);
+                Trainer.save();
               
                
-           }
+            }
           
        
         res.send({message:""});
