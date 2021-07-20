@@ -19,15 +19,15 @@ export class TrainerService {
     photo:"",
     ID:""
   }
-
+courses:any;
   constructor(public http : HttpClient) { }
 
-  newTrainer(image:any, courses:any,trainer : any)
+  newTrainer(image:any, trainer : any)
   {
-    courses=JSON.stringify(courses);
+    this.courses=JSON.stringify(trainer.ictakcourses);
     const formData = new FormData();
-    formData.append('file', image);
-    formData.append('courselist', courses);   
+    formData.append('file', image);  
+     
     formData.append('name', trainer.name); 
     formData.append('email', trainer.email); 
     formData.append('phone', trainer.phone); 
@@ -36,7 +36,7 @@ export class TrainerService {
     formData.append('skillset', trainer.skillset ); 
     formData.append('company', trainer.company ); 
     formData.append('designation', trainer.designation ); 
-    formData.append('ictakcourses',  trainer.ictakcourses); 
+    formData.append('ictakcourses',  this.courses); 
     formData.append('photo', trainer.photo); 
     formData.append('ID', trainer.ID ); 
     return this.http.post<any>('http://localhost:3000/form',formData);
