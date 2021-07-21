@@ -28,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalenderComponent } from './calender/calender.component';
+import { RequestComponent } from './request/request.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { CalenderComponent } from './calender/calender.component';
     FooterComponent,
     UserComponent,
     EnrollmentComponent,
-    CalenderComponent
+    CalenderComponent,
+    RequestComponent
    
 
   ],

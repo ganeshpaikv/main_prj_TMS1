@@ -42,5 +42,19 @@ courses:any;
     return this.http.post<any>('http://localhost:3000/form',formData);
     
   }
+  
+   getTrainers(){
+    return this.http.get('http://localhost:3000/request')
+  };
+  getTrainer(id:any){
+    return this.http.get("http://localhost:3000/"+id);
+  };
+
+  editTrainer(trainer:any)
+  {   
+    console.log(`editBook : ${trainer.name}`);
+   return this.http.put("http://localhost:3000/update",trainer)
+     .subscribe(data =>{console.log(data)})
+  };
 
 }
