@@ -16,7 +16,9 @@ const TrainerSchema= new Schema({
     designation:String,
     ictakcourses:String,
     photo:String,
-    ID:String
+    ID:String,
+    approved:Boolean,
+    employment:String
     
 });
 var Trainerdata=mongoose.model("trainerdata",TrainerSchema);

@@ -64,7 +64,9 @@ function router(tokverify,storage){
                      designation:req.body.designation,
                       ictakcourses:coursedata,
                         photo:req.file.filename,
-                     ID:id_final
+                     ID:id_final,
+                     approved:false,
+                     employment:''
                  }
               
                 var Trainer=Trainerdata(item);
