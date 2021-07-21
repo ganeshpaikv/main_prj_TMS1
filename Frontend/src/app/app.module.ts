@@ -25,7 +25,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalenderComponent } from './calender/calender.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminComponent,
     FooterComponent,
     UserComponent,
-    EnrollmentComponent
+    EnrollmentComponent,
+    CalenderComponent
    
 
   ],
@@ -53,7 +56,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   
   ],
   providers: [AuthService, AuthGuard, TrainerService,

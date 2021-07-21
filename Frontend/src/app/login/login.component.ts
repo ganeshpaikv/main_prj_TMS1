@@ -40,7 +40,7 @@ submitted =false;
         },
         err => {
           console.log(err);          
-          this.LoginError.errorMsg= err.error;
+          this.LoginError.errorMsg= 'Error connecting to server'
           this.LoginError.error = true;
           ;
           
