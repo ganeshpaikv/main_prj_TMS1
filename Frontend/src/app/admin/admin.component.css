@@ -24,7 +24,7 @@ mat-toolbar {
     
   
   }
-  .nav-link{
+  a{
     font-family: 'Roboto', sans-serif;
     color: rgba(252, 246, 246, 0.945);
     text-decoration: none;
