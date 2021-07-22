@@ -26,7 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RequestComponent } from './request/request.component';
-
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,6 @@ import { RequestComponent } from './request/request.component';
     EnrollmentComponent,
     RequestComponent
    
-
   ],
   imports: [
     BrowserModule,
@@ -56,7 +55,7 @@ import { RequestComponent } from './request/request.component';
     MatSidenavModule,
     MatButtonModule,
     MatDividerModule
-  
+
   ],
   providers: [AuthService, AuthGuard, TrainerService,
     {
