@@ -19,14 +19,15 @@ export class TrainerService {
     photo:"",
     ID:""
   }
-
+courses:any;
   constructor(public http : HttpClient) { }
 
   newTrainer(image:any, trainer : any)
   {
-    console.log('insert trainer')
+    this.courses=JSON.stringify(trainer.ictakcourses);
     const formData = new FormData();
     formData.append('file', image);  
+     
     formData.append('name', trainer.name); 
     formData.append('email', trainer.email); 
     formData.append('phone', trainer.phone); 
@@ -35,11 +36,25 @@ export class TrainerService {
     formData.append('skillset', trainer.skillset ); 
     formData.append('company', trainer.company ); 
     formData.append('designation', trainer.designation ); 
-    formData.append('ictakcourses',  trainer.ictakcourses); 
+    formData.append('ictakcourses',  this.courses); 
     formData.append('photo', trainer.photo); 
     formData.append('ID', trainer.ID ); 
-    return this.http.post('http://localhost:3000/enrollment', formData)
-     .subscribe(data =>{console.log(data)});
+    return this.http.post<any>('http://localhost:3000/form',formData);
+    
   }
+  
+   getTrainers(){
+    return this.http.get('http://localhost:3000/request')
+  };
+  getTrainer(id:any){
+    return this.http.get("http://localhost:3000/"+id);
+  };
+
+  editTrainer(trainer:any)
+  {   
+    console.log(`editBook : ${trainer.name}`);
+   return this.http.put("http://localhost:3000/update",trainer)
+     .subscribe(data =>{console.log(data)})
+  };
 
 }

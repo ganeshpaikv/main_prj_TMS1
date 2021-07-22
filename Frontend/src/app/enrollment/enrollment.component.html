@@ -5,7 +5,7 @@
   <br>
   <br>
   <h2 class="for" style="font-family: Georgia, 'Times New Roman', Times, serif;">Trainer Enrollment Form</h2><br>
-<form class="row g-3"  #enrollmentForm="ngForm" (ngSubmit)="enrollmentForm.form.valid && verify(enrollmentForm)">
+<form class="row g-3"  #enrollmentForm="ngForm" enctype="multipart/form-data" (ngSubmit)="enrollmentForm.form.valid && verify(enrollmentForm)">
   
   <div class="col-md-4">
     <label for="inputName" class="form-label">Name</label>
@@ -13,7 +13,7 @@
     <small class="form-text text-muted" *ngIf="name.touched && !name.valid" class="form-label text-danger">Enter valid name</small>
   </div>
   <div class="col-md-4">
-    <label for="inputEmail" class="form-label">Email</label>
+    <label for="inputEmail" class="form-label">Login Email</label>
     <input type="email" class="form-control" name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" [(ngModel)]="trainer.email" required >
     <small class="form-text text-muted" *ngIf="email.touched && !email.valid" class="form-label text-danger">Enter valid email</small>
   </div>
@@ -50,7 +50,7 @@
   </div>
   <div class="col-md-12">
     <label for="inputCourses" class="form-label">ICTAK Course handling</label>
-    <ng-select id="for2" [items]="categories"  
+    <ng-select [items]="categories"  
                bindLabel="name"  
                placeholder="Select Category" 
                name="ictakcourses" 

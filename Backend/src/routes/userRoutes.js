@@ -1,21 +1,40 @@
 const express=require("express");
+const app=express();
 //const Authordata=require("../model/Authordata");
 const userrouter=express.Router();
 const Trainerdata=require('../model/Trainerdata');
 const multer=require('multer');
+app.use(express.urlencoded({extended:true}));
 //const Bookdata=require('../model/Bookdata');
+// idgenerate=function(){      
+//   Trainerdata.countDocuments({}, function(err, count){
+//     if(err){
+//       console.log(err);
+//    }
+//       else{num=count+1;
+//     id_final='TN000'+num.toString();  
+//     console.log(id_final) 
+//      return id_final;
+     
+//       }
+//       });}
+      
 function router(tokverify,storage){
-    userrouter.post('/form',tokverify,(req,res)=>{
-        Trainerdata.find({"email":req.body.trainer.email},(err,resp)=>{
-            if(resp.length==0){
-                 var num=Trainerdata.count();
-                 let upload = multer({ storage: storage}).single();
+    coursedata='';
+   id_final='';
         
-                upload(req, res, function(err) {
+    userrouter.post('/',tokverify,(req,res)=>{
+      
+        
+            
+                 let upload = multer({ storage: storage}).single('file');
+                 
+               upload(req, res,function(err) {
+                
             // req.file contains information of uploaded file
             // req.body contains information of text fields, if there were any
-    
-            
+            Trainerdata.find({"email":req.body.email},(err,resp)=>{
+              if(resp.length==0){
                    if (!req.file) {
                 
                        console.log('Please select an image to upload');
@@ -24,26 +43,41 @@ function router(tokverify,storage){
                        console.log(err);
                  } 
                else{
+                objcourse=JSON.parse(req.body.ictakcourses);
+                for(i=0;i<objcourse.length;i++){
+                    if(i==0){
+                    coursedata=coursedata.concat(objcourse[i].name)}
+                    else{
+                        coursedata=coursedata.concat(',',objcourse[i].name);
+                    }
+                }
+               var value=Math.floor(Math.random()*1000);
+               id_final='TN'+value.toString();
                        var item={
-                        name:req.body.trainer.name,
-                        email:req.body.trainer.email,
-                        phone:req.body.trainer.phone,
-                        address:req.body.trainer.address,
-                        qualification:req.body.trainer.qualification,
-                        skillset:req.body.trainer.skillset,
-                        company:req.body.trainer.company,
-                        designation:req.body.trainer.designation,
-                        ictakcourses:req.body.trainer.ictakcourses,
+                       name:req.body.name,
+                      email:req.body.email,
+                       phone:req.body.phone,
+                       address:req.body.address,
+                     qualification:req.body.qualification,
+                     skillset:req.body.skillset,
+                      company:req.body.company,
+                     designation:req.body.designation,
+                      ictakcourses:coursedata,
                         photo:req.file.filename,
-                        ID:'000'+String(num)
+                     ID:id_final
                  }
+              
                 var Trainer=Trainerdata(item);
                 Trainer.save();
+              
+               
             }
-        });
+          
+       
+        res.send({message:""});
     }
     else{
-        res.send({message:'Trainer already exists'});
+        res.send({message:'Trainer already exists.Change email id'});
     }
         
         
@@ -51,6 +85,7 @@ function router(tokverify,storage){
        
      })
     });
+  });
 return userrouter;
 }
 module.exports=router;

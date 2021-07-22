@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatIconModule } from "@angular/material/icon";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,11 +19,13 @@ import { FooterComponent } from './footer/footer.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { NgSelectModule } from '@ng-select/ng-select'; 
 import { TrainerService } from './trainer.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RequestComponent } from './request/request.component';
 import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
@@ -36,7 +38,8 @@ import { MatDividerModule } from '@angular/material/divider';
     AdminComponent,
     FooterComponent,
     UserComponent,
-    EnrollmentComponent
+    EnrollmentComponent,
+    RequestComponent
    
   ],
   imports: [
@@ -51,9 +54,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
-   
     MatDividerModule
-    
+
   ],
   providers: [AuthService, AuthGuard, TrainerService,
     {

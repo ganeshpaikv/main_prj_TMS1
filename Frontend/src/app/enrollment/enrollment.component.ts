@@ -4,7 +4,7 @@ import { mixinDisabled } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TrainerService } from '../trainer.service';
-import { TrainerComponent } from '../trainer/trainer.component';
+//import { TrainerComponent } from '../trainer/trainer.component';
 
 @Component({
   selector: 'app-enrollment',
@@ -48,11 +48,18 @@ export class EnrollmentComponent implements OnInit {
   verify(formValue:NgForm){
   
     this.trainer.photo = this.trainer.photo.replace('C:\\fakepath\\','');
-    this.trainerObj.newTrainer(this.image, this.trainer);
-    console.log(` upload image ${this.image}`); 
-    console.log('data updated');
+    this.trainerObj.newTrainer(this.image, this.trainer).subscribe((data)=>{
+      if(data.message!=""){
+        alert("Trainer already exists.Please change email");}
+        else{
+          alert("Trainer added successfully");
+          this.router.navigate(['/home']);   
+        }
+      })
+    
+   
     localStorage.setItem('trainerAlertMsg', `The form submitted successfully`); 
-    this.router.navigate(['/home']);   
+   
   }
   
 
