@@ -44,17 +44,18 @@ courses:any;
   }
   
    getTrainers(){
-    return this.http.get('http://localhost:3000/request')
+    return this.http.get('http://localhost:3000/requests')
   };
   getTrainer(id:any){
     return this.http.get("http://localhost:3000/"+id);
   };
 
-  editTrainer(trainer:any)
-  {   
-    console.log(`editBook : ${trainer.name}`);
-   return this.http.put("http://localhost:3000/update",trainer)
-     .subscribe(data =>{console.log(data)})
-  };
+ 
+  AcceptTrainer(id:any){
+    return this.http.put("http://localhost:3000/requests/accept/",+id)
+  }
+  RejectTrainer(id:any){
+    return this.http.put("http://localhost:3000/requests/reject/",+id)
+  }
 
 }

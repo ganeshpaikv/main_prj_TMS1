@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended:true}));
 
 function router(tokverify){
     
-    adminrouter.get('/requests',function(req,res){
+    adminrouter.get('/',function(req,res){
         console.log("Request page");
         Trainerdata.find({"approved":false})
         .then(function(trainers){

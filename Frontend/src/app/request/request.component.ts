@@ -33,7 +33,19 @@ export class RequestComponent implements OnInit {
     ID:''
   }
 
-
+  trainers=[{
+    name:'',
+    email:'',
+    phone:'',
+    address:'',
+    qualification:'',
+    skillset:'',
+    company:'',
+    designation:'',
+    ictakcourses:'',
+    photo:'',
+    ID:''
+  }]
 
   constructor(public trainersObj : TrainerService, private router:Router,private http : HttpClient, public _auth :AuthService, ) { }
 
@@ -62,15 +74,24 @@ export class RequestComponent implements OnInit {
    
   acceptTrainer(trainer: any)
   {
-    localStorage.setItem("editTrainerId", trainer._id.toString());
-    this.router.navigate(['editTrainer']);
+    
+    //this.router.navigate(['editTrainer']);
+    this.trainersObj.AcceptTrainer(trainer._id)
+    .subscribe((data)=>{console.log(data);
+     
+      });
+    this.router.navigate(['profile']);
     localStorage.removeItem('trainerAlertMsg'); 
   };
 
   rejectTrainer(trainer: any)
   {
-    localStorage.setItem("deleteTrainerId", trainer._id.toString());
-    this.router.navigate(['request']);
+    this.trainersObj.RejectTrainer(trainer._id)
+    .subscribe((data)=>{
+      this.trainers= this.trainers.filter(b => b!== trainer);
+     
+      });
+    
     localStorage.removeItem('trainerAlertMsg'); 
   };
 
