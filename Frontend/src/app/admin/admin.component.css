@@ -29,6 +29,9 @@ mat-toolbar {
     color: rgba(252, 246, 246, 0.945);
     text-decoration: none;
   }
+  button{
+    background-color: #010407;
+  }
 
   .centered {
     position: absolute;
