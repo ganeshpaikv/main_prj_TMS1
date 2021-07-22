@@ -4,7 +4,7 @@ const adminrouter=express.Router();
 const multer=require('multer');
 const Trainerdata = require("../model/Trainerdata");
 const nodemailer = require('nodemailer');
-var emp = ['Internal', 'Empanelled','Industry Expert'];
+const emp = ['Internal', 'Empanelled','Industry Expert'];
 
 
 var transporter = nodemailer.createTransport({
@@ -40,18 +40,20 @@ function router(tokverify){
     });
     
     
-    adminrouter.put('/:id/accept',function(req,res){
+    adminrouter.put('/accept',function(req,res){
         
-     const id = req.params.id;
-           var item ={
-             approved : true,
-             employment = Math.floor(Math.random() * emp.length)
-           };
-       Trainerdata.findByIdAndUpdate(id,item)
+     const id = req.body._id;
+     console.log(id);
+         var job=Math.floor(Math.random() * (emp.length)) ; 
+         console.log(job);
+       Trainerdata.findByIdAndUpdate({_id:id},{$set:{"approved":true,
+       "employment" :job} 
+       
+       })
         .then(function(trainers){
           var mailOptions = {
             from: 'tmsadmn@gmail.com',
-             to: req.body.email,
+             to: trainers.email,
             subject: 'Selected as a Trainer at ICT',
             text: 'Congratulations!! you have been selected as a trainer at ICT.'
           };
@@ -68,35 +70,35 @@ function router(tokverify){
          });
  
  
-     adminrouter,get('/request/delete',function(req,res){
-               const id = req.params.id;
-        Trainerdata.deleteOne({_id:id},(err,resp)=>{
-            if(err){
-                console.log(err);
-            }
-            else{
+    //  adminrouter.get('/requests/delete',function(req,res){
+    //            const id = req.params.id;
+    //     Trainerdata.deleteOne({_id:id},(err,resp)=>{
+    //         if(err){
+    //             console.log(err);
+    //         }
+    //         else{
 
-              var mailOptions = {
-                from: 'tmsadmn@gmail.com',
-                 to: req.body.email,
-                subject: 'Unfortunately you are not selected',
-                text: 'We are sorry that we cannot hire you at the moment.'
-              };
-              transporter.sendMail(mailOptions, function(error, info){
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log('Email sent: ' + info.response);
-                }
-              });
+    //           var mailOptions = {
+    //             from: 'tmsadmn@gmail.com',
+    //              to: req.body.email,
+    //             subject: 'Unfortunately you are not selected',
+    //             text: 'We are sorry that we cannot hire you at the moment.'
+    //           };
+    //           transporter.sendMail(mailOptions, function(error, info){
+    //             if (error) {
+    //               console.log(error);
+    //             } else {
+    //               console.log('Email sent: ' + info.response);
+    //             }
+    //           });
 
-            }
-        })
+    //         }
+    //     })
  
-     });
+    //  });
     
     
-    adminrouter,get('/delete/:id',function(req,res){
+    adminrouter.get('/delete/:id',function(req,res){
                const id = req.params.id;
         Trainerdata.deleteOne({_id:id},(err,resp)=>{
             if(err){
