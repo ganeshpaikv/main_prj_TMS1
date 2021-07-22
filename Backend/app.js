@@ -47,8 +47,8 @@ const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
 app.use('/form',userrouter);
 
 app.use('/requests',adminrouter);
-app.use('/requests/accept',adminrouter);
-app.use('/requests/reject', adminrouter);
+app.use('/requests/accept/',adminrouter);
+app.use('/requests/reject/', adminrouter);
 
 //signup call for backend//
 app.post('/signup',function(req,res){

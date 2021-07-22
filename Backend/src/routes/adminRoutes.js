@@ -40,13 +40,13 @@ function router(tokverify){
     });
     
     
-    adminrouter.put('/accept',function(req,res){
+    adminrouter.put('/accept/:id',function(req,res){
         
-     const id = req.body._id;
+     const id = req.params.id;
      console.log(id);
          var job=Math.floor(Math.random() * (emp.length)) ; 
          console.log(job);
-       Trainerdata.findByIdAndUpdate({_id:id},{$set:{"approved":true,
+       Trainerdata.findByIdAndUpdate(id,{$set:{"approved":true,
        "employment" :job} 
        
        })
