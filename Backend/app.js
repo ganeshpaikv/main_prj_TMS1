@@ -45,7 +45,11 @@ function verifyToken(req, res, next) {
 const userrouter=require("./src/routes/userRoutes")(verifyToken,storage)
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
 app.use('/form',userrouter);
+
 app.use('/requests',adminrouter);
+app.use('/requests/accept',adminrouter);
+app.use('/requests/reject', adminrouter);
+
 //signup call for backend//
 app.post('/signup',function(req,res){
   pass_hash = Bcrypt.hashSync(req.body.user.password, 10); //password hashing//
