@@ -19,10 +19,12 @@ import { FooterComponent } from './footer/footer.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
 import { NgSelectModule } from '@ng-select/ng-select'; 
 import { TrainerService } from './trainer.service';
-import { TrainerComponent } from './trainer/trainer.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { RequestsComponent } from './requests/requests.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
 
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,13 @@ import { RequestsComponent } from './requests/requests.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+   
+    MatDividerModule
     
   ],
   providers: [AuthService, AuthGuard, TrainerService,
