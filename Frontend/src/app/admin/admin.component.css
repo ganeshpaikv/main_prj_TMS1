@@ -1,5 +1,85 @@
-.container{
-    font-size: 200px;
+
+
+
+mat-toolbar {
+  background: #010407;
+  color: white;
+}
+  mat-sidenav {
+    margin: 16px;
+    width: 230px;
+    border-right: none;
+    background: #010a14;
+    color: white;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .content {
+    height: calc(100vh - 98px);
+    border-radius: 10px;
+    margin: 16px;
+    margin-left: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  
+  }
+  .nav-link{
+    font-family: 'Roboto', sans-serif;
+    color: rgba(252, 246, 246, 0.945);
+    text-decoration: none;
+  }
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 500;
+  }
+
+  mat-sidenav-container {
+    height: calc(100vh - 65px);
+  }
+  
+  .menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+  .menu-button mat-icon {
+    margin-right: 8px;
+  }
+  .avatar {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  .name {
+    margin-top: 8px;
+    font-weight: normal;
+  }
+  .designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+  }
+  mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+h2{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align:justify;
+  color: rgb(26, 80, 180);
+  font-size: 150%;
+  
 }
