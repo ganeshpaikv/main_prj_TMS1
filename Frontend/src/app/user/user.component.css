@@ -20,9 +20,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-mat-sidenav-container {
-  height: calc(100vh - 65px);
-}
+
 
 
 
