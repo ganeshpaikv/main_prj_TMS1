@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
-  trainersdata:any;
+ trainersdata:any;
   imageWidth: number = 50;
   imageMargin: number = 2;
   showImage  : boolean = true;
@@ -56,8 +56,8 @@ export class RequestComponent implements OnInit {
     setTimeout(() => {
     this.trainersObj.getTrainers()
     .subscribe((trainer)=>{
-      this.trainersdata =trainer;
-      console.log(this.trainersdata);
+      this.trainersdata=trainer;
+      console.log(trainer);
       localStorage.removeItem('trainerAlertMsg'); 
       });
        }, 50);

@@ -23,7 +23,7 @@ function router(tokverify,storage){
     coursedata='';
    id_final='';
         
-    userrouter.post('/',tokverify,(req,res)=>{
+    userrouter.post('/form',tokverify,(req,res)=>{
       
         
             
@@ -88,6 +88,13 @@ function router(tokverify,storage){
      })
     });
   });
+  userrouter.get('/trainerprofile',tokverify,(req,res)=>{
+    Trainerdata.find({"email":req.body.user.email})
+    .then(function(trainer){
+      res.send(trainer);
+    })
+  }
+  )
 return userrouter;
 }
 module.exports=router;

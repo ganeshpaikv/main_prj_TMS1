@@ -29,18 +29,18 @@ function router(tokverify){
       });
 
    
-    adminrouter.get('/requests/:id',function(req,res){
-        const id = req.params.id;
-       Trainerdata.findOne({_id:id}) 
+    // adminrouter.get('/requests/:id',function(req,res){
+    //     const id = req.params.id;
+    //    Trainerdata.findOne({_id:id}) 
         
-        .then(function(trainers){
-            res.send(trainers);
-          })
+    //     .then(function(trainers){
+    //         res.send(trainers);
+    //       })
 
-    });
+    // });
     
     
-    adminrouter.put('/accept/:id',function(req,res){
+    adminrouter.get('/accept/:id',function(req,res){
         
      const id = req.params.id;
      console.log(id);
@@ -55,7 +55,8 @@ function router(tokverify){
             from: 'tmsadmn@gmail.com',
              to: trainers.email,
             subject: 'Selected as a Trainer at ICT',
-            text: 'Congratulations!! you have been selected as a trainer at ICT.'
+            text: 'Congratulations!! you have been selected as a trainer at ICT.Please find the details below',
+            html:`<p>Type of employment:${trainers.employment},Trainer ID:${trainers.ID}</p>`
           };
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {
@@ -98,7 +99,7 @@ function router(tokverify){
     //  });
     
     
-    adminrouter.get('/delete/:id',function(req,res){
+    adminrouter.delete('/delete/:id',function(req,res){
                const id = req.params.id;
         Trainerdata.deleteOne({_id:id},(err,resp)=>{
             if(err){
@@ -121,6 +122,7 @@ function router(tokverify){
               });
 
             }
+            res.send();
         })
  
      });

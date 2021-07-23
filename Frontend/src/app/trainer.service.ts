@@ -52,10 +52,10 @@ courses:any;
 
  
   AcceptTrainer(id:any){
-    return this.http.put("http://localhost:3000/requests/accept/",+id)
+    return this.http.get("http://localhost:3000/requests/accept/"+id)
   }
   RejectTrainer(id:any){
-    return this.http.put("http://localhost:3000/requests/reject/",+id)
+    return this.http.delete("http://localhost:3000/requests/delete/"+id)
   }
 
 }

@@ -44,11 +44,12 @@ function verifyToken(req, res, next) {
 //Router declarations//
 const userrouter=require("./src/routes/userRoutes")(verifyToken,storage)
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
-app.use('/form',userrouter);
-
+app.use('/userhome',userrouter);
+app.use('/userhome/form',userrouter);
+app.use('/userhome/trainerprofile',userrouter);
 app.use('/requests',adminrouter);
-app.use('/requests/accept/',adminrouter);
-app.use('/requests/reject/', adminrouter);
+app.use('/requests/accept',adminrouter);
+app.use('/requests/delete', adminrouter);
 
 //signup call for backend//
 app.post('/signup',function(req,res){
