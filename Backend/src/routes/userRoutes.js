@@ -88,8 +88,9 @@ function router(tokverify,storage){
      })
     });
   });
-  userrouter.get('/trainerprofile',tokverify,(req,res)=>{
+  userrouter.get('/trainerprofile/:email',tokverify,(req,res)=>{
     const email=req.params.email;
+    console.log(email);
     Trainerdata.find({$and:[{"email":email},{"approved":true}]})
     .then(function(trainer){
       res.send(trainer);

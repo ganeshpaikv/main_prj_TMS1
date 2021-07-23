@@ -47,7 +47,7 @@ function router(tokverify){
          var job=Math.floor(Math.random() * (emp.length)) ; 
          console.log(job);
        Trainerdata.findByIdAndUpdate(id,{$set:{"approved":true,
-       "employment" :job} 
+       "employment" :emp[job]} 
        
        })
         .then(function(trainers){
