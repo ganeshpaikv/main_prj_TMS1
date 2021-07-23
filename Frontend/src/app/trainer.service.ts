@@ -17,8 +17,14 @@ export class TrainerService {
     designation:"",
     ictakcourses:"",
     photo:"",
-    ID:""
+    ID:"",
+    employment:''
   }
+  
+   User= {
+    email: '',
+    password    : '',
+};
 courses:any;
   constructor(public http : HttpClient) { }
 
@@ -46,8 +52,8 @@ courses:any;
    getTrainers(){
     return this.http.get('http://localhost:3000/requests')
   };
-  getTrainer(id:any){
-    return this.http.get("http://localhost:3000/"+id);
+  getTrainer(email:any){
+    return this.http.get("http://localhost:3000/userhome/trainerprofile/"+email);
   };
 
  
