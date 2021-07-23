@@ -47,7 +47,7 @@ export class TrainerProfileComponent implements OnInit {
     .subscribe((trainerItem)=>{
       this.trainer= JSON.parse(JSON.stringify(trainerItem));
     
-      console.log(this.trainer)
+     
       });
   
 

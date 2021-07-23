@@ -53,7 +53,7 @@ export class EnrollmentComponent implements OnInit {
         alert("Trainer already exists.Please change email");}
         else{
           alert("Trainer added successfully");
-          this.router.navigate(['/home']);   
+          this.router.navigate(['/user']);   
         }
       })
     
