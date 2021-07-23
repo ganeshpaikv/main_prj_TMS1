@@ -23,7 +23,8 @@ export class TrainerProfileComponent implements OnInit {
     designation:'',
     ictakcourses:'',
     photo:'',
-    ID:''
+    ID:'',
+    employment:''
   }
   categories = [  
     {id: 1, name: 'Full Stack Development'},  
