@@ -19,10 +19,17 @@ export class HeaderComponent implements OnInit {
 logoutUser()
 {
 localStorage.removeItem('token')
+localStorage.removeItem('currentUser')
 this._router.navigate(['/'])
 }
 
 getloguser(){
   this.loggedUser = this._auth.getCurrentUser(); 
+  if(this.loggedUser=="tmsadmn@gmail.com"){
+    return true;}
+    else{
+      return false;
+    }
+  }
 }
-}
+

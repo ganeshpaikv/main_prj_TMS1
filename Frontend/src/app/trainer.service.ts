@@ -39,7 +39,7 @@ courses:any;
     formData.append('ictakcourses',  this.courses); 
     formData.append('photo', trainer.photo); 
     formData.append('ID', trainer.ID ); 
-    return this.http.post<any>('http://localhost:3000/form',formData);
+    return this.http.post<any>('http://localhost:3000/userhome/form',formData);
     
   }
   

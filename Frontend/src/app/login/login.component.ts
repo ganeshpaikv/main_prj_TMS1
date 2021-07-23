@@ -30,7 +30,7 @@ submitted =false;
       this._auth.loginUser(this.User)
       .subscribe(res=>{
           localStorage.setItem('token', res.token)          
-          //localStorage.setItem('currentUser', res.users.firstname)
+          localStorage.setItem('currentUser', this.User.email);
           
           if (this.User.email=="tmsadmn@gmail.com")
           this._router.navigate(['/admin'])
