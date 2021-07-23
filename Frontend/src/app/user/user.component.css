@@ -19,6 +19,9 @@ mat-toolbar {
     color: rgba(252, 246, 246, 0.945);
     text-decoration: none;
   }
+  button{
+    background-color: #010407;
+  }
   .content {
     height: calc(100vh - 98px);
     border-radius: 10px;
