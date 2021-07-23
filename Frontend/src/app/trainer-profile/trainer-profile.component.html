@@ -1,0 +1,55 @@
+<body>
+    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="row">
+          <div class="col-md-3 border-right">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="assets/img/{{trainer.photo}}" name="photo" [(ngModel)]="trainer.photo" #photo="ngModel"><span class="font-weight-bold">{{trainer.name}}</span><span class="text-black-50">{{trainer.email}}</span><span> </span></div>
+          </div>
+          <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h4 class="text-right">Profile </h4>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" disabled  placeholder="{{trainer.name}}" value=""name="name" [(ngModel)]="trainer.name" #name="ngModel" ></div>
+                      <div class="col-md-6"><label class="labels">PhoneNumber</label><input type="text" class="form-control" disabled  placeholder="{{trainer.phone}}" value="" name="phone" [(ngModel)]="trainer.phone" #phone="ngModel"></div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="{{trainer.email}}" disabled value="" name="email" [(ngModel)]="trainer.email" #email="ngModel"></div>
+                      <div class="col-md-12"><label class="labels">Address</label><input type="text" class="form-control" disabled  placeholder="{{trainer.address}}" value="" name="address" [(ngModel)]="trainer.address" #address="ngModel"></div>
+                      <div class="col-md-12"><label class="labels">Highest Qualification</label><input type="text" class="form-control" disabled  placeholder="{{trainer.qualification}}" value="" name="qualification" [(ngModel)]="trainer.qualification" #qualification="ngModel"></div>
+                      <div class="col-md-12"><label class="labels">Skill Set</label><input type="text" class="form-control" disabled  placeholder="{{trainer.skillset}}" value="" name="skillset" [(ngModel)]="trainer.skillset" #skillset="ngModel"></div>
+                      <div class="col-md-12"><label class="labels">Current Company Name</label><input type="text" class="form-control" disabled  placeholder="{{trainer.company}}" value="" name="company" [(ngModel)]="trainer.company" #company="ngModel"></div>
+                      <div class="col-md-12"><label class="labels">Current Designation</label><input type="text" class="form-control" disabled  placeholder="{{trainer.designation}}" value="" name="designation" [(ngModel)]="trainer.designation" #designation="ngModel"></div>
+                      <div class="col-md-12"><label class="labels">ICTAK Courses Handling</label>
+                        <input type="text" class="form-control" disabled  placeholder="{{trainer.ictakcourses}}" value="" name="ictakcourses" [(ngModel)]="trainer.ictakcourses" #courses="ngModel">
+                    </div>
+
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-6"><label class="labels">Type of Employment</label><input type="text" class="form-control" disabled  placeholder="{{trainer.employment}}" name="employment" [(ngModel)]="trainer.employment" #employment="ngModel"></div>
+                      <div class="col-md-6"><label class="labels">ID</label><input type="text" class="form-control" disabled  placeholder="{{trainer.ID}}" value="" name="ID" [(ngModel)]="trainer.ID" #ID="ngModel"></div>
+                  
+                    </div>
+            
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="p-3 py-5">
+                  <div class="d-flex justify-content-between align-items-center experience"><span>Edit Details</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Save</span></div><br>
+                  <div class="col-md-12"><label class="labels">Skill set</label><input type="text" class="form-control" value="" name="skillset" [(ngModel)]="trainer.skillset" #skillset="ngModel"></div> <br>
+                  <div class="col-md-12"><label for="inputCourses" class="labels">ICTAK Course handling</label>
+                    <ng-select id="for2" [items]="categories"  
+                               bindLabel="name"  
+                               name="ictakcourses" 
+                               appendTo="body"    
+                               [multiple]="true"  
+                               [(ngModel)]="trainer.ictakcourses"
+                               #ictakcourses="ngModel"
+                                required>  
+                </ng-select></div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </body>
+

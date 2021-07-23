@@ -29,6 +29,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalenderComponent } from './calender/calender.component';
 import { RequestComponent } from './request/request.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatDividerModule } from '@angular/material/divider';
     UserComponent,
     EnrollmentComponent,
     CalenderComponent,
-    RequestComponent
+    RequestComponent,
+    TrainerProfileComponent
    
   ],
   imports: [
