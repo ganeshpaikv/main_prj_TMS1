@@ -35,24 +35,19 @@ export class TrainerProfileComponent implements OnInit {
   image: any; 
   Trainer:any
   
-  User= {
-    email: '',
-    password    : '',
-};
+ 
 
-  constructor(public trainerObj : TrainerService,private _auth : AuthService, private router:Router, private http : HttpClient) { }
+  constructor(public trainerObj : TrainerService, private router:Router, private http : HttpClient) { }
 
   ngOnInit(): void {
-    this._auth.loginUser(this.User)
-    .subscribe(res=>{
-        localStorage.setItem('email', this.User.email)  
-    })
+   
 
-    let trainerEmail = localStorage.getItem("getBookId");
+    let trainerEmail = localStorage.getItem('currentUser');
     this.trainerObj.getTrainer(trainerEmail)
     .subscribe((trainerItem)=>{
-      this.Trainer = trainerItem;
-      console.log(this.Trainer)
+      this.trainer= JSON.parse(JSON.stringify(trainerItem));
+    
+      console.log(this.trainer)
       });
   
 
