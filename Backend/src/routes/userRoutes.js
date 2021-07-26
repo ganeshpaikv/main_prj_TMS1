@@ -97,6 +97,14 @@ function router(tokverify,storage){
     })
   }
   )
+  userrouter.put('/trainerprofile/edit',tokverify,(req,res)=>{
+    Trainerdata.findOneAndUpdate({"email":req.body.trainer.email},{$set:{"skillset":req.body.trainer.skillset,
+  "ictakcourses":req.body.trainer.ictakcourses}})
+   .then(function(trainer){
+     res.send(trainer);
+   })
+    
+  })
 return userrouter;
 }
 module.exports=router;

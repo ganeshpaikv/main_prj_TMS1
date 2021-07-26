@@ -18,7 +18,14 @@ const TrainerSchema= new Schema({
     photo:String,
     ID:String,
     approved:Boolean,
-    employment:String
+    employment:String,
+    startdate:Date,
+    enddate:Date,
+    time:String,
+    coursename:String,
+    courseid:String,
+    batchid:String,
+    meetingvenue:String
     
 });
 var Trainerdata=mongoose.model("trainerdata",TrainerSchema);

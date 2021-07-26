@@ -63,5 +63,7 @@ courses:any;
   RejectTrainer(id:any){
     return this.http.delete("http://localhost:3000/requests/delete/"+id)
   }
-
+EditTrainer(trainer:any){
+  return this.http.put("http://localhost:3000/trainerprofile/edit",{"trainer":trainer});
+}
 }

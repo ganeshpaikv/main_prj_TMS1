@@ -31,5 +31,8 @@ getloguser(){
       return false;
     }
   }
+  route(){
+    this._router.navigate(['profile']);
+  }
 }
 

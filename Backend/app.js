@@ -45,11 +45,14 @@ function verifyToken(req, res, next) {
 const userrouter=require("./src/routes/userRoutes")(verifyToken,storage)
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
 app.use('/userhome',userrouter);
+app.use('/adminhome',userrouter);
 app.use('/userhome/form',userrouter);
 app.use('/userhome/trainerprofile',userrouter);
-app.use('/requests',adminrouter);
-app.use('/requests/accept',adminrouter);
-app.use('/requests/delete', adminrouter);
+app.use('/userhome/trainerprofile/edit',userrouter);
+app.use('/adminhome/requests',adminrouter);
+app.use('/adminhome/requests/accept',adminrouter);
+app.use('adminhome/requests/delete', adminrouter);
+app.use('/adminhome/allocation',adminrouter);
 
 //signup call for backend//
 app.post('/signup',function(req,res){

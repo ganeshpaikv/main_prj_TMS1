@@ -35,9 +35,11 @@ export class TrainerProfileComponent implements OnInit {
   image: any; 
   Trainer:any
   
+ trainerup={ skillset:'',
  
+ ictakcourses:''}
 
-  constructor(public trainerObj : TrainerService, private router:Router, private http : HttpClient) { }
+  constructor(private trainerObj : TrainerService, private router:Router, private http : HttpClient) { }
 
   ngOnInit(): void {
    
@@ -52,5 +54,10 @@ export class TrainerProfileComponent implements OnInit {
   
 
   }
-
+editdetails(){
+  this.trainer.ictakcourses=JSON.stringify(this.trainer.ictakcourses);
+  this.trainerObj.EditTrainer(this.trainer)
+  alert("Trainer updated");
+  this.router.navigate(['profile']); 
+}
 }
