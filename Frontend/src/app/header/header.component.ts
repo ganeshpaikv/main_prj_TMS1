@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
- appr:any;
+ appr :any;
   loggedUser : any ='';
   constructor(public _auth :AuthService, private _router :Router ) { }
 
@@ -36,8 +36,9 @@ getloguser(){
     this._router.navigate(['profile']);
   }
   isapproved(){
-    this.appr=localStorage.getItem('Approvalstatus');
-    if(this.appr){
+  let apstatus=localStorage.getItem('Approvalstatus');
+
+    if(apstatus){
       return true;
     }
     else{

@@ -109,10 +109,11 @@ app.post('/signup',function(req,res){
                   
                     let payload = {subject: req.body.email+req.body.password}
                     let token = jwt.sign(payload, 'secretKey')
-                    Trainerdata.find({email:email},function(err,trainer) {
+                    Trainerdata.findOne({email:email},function(err,trainer) {
                         approved=trainer.approved;
+                        res.status(200).send({tok:token,approval:approved})
                     })
-                    res.status(200).send({tok:token,approval:approved})
+                    
                   }
                   else{
                     res.status(401).send('Invalid credentials');
