@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.urlencoded({extended:true}));
 const PORT=process.env.PORT||3000;
 const Userdata=require('./src/model/Userdata');
+const Trainerdata=require('./src/model/Trainerdata');
 const storage = multer.diskStorage({
     
   destination : function(req, file, cb) {
@@ -108,7 +109,15 @@ app.post('/signup',function(req,res){
                   
                     let payload = {subject: req.body.email+req.body.password}
                     let token = jwt.sign(payload, 'secretKey')
-                    res.status(200).send({token})
+                    Trainerdata.find({email:email},function(err,trainer) {
+                        if(trainer.approved){
+                          approved=true;
+                        }
+                        else{
+                          approved=false;
+                        }
+                    })
+                    res.status(200).send({tok:token,approval:approved})
                   }
                   else{
                     res.status(401).send('Invalid credentials');
