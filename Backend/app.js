@@ -7,7 +7,7 @@ const jwt=require('jsonwebtoken');
 const multer=require('multer');
 app.use(express.json());
 app.use(cors());
-
+var approved=new Boolean();
 app.use(express.urlencoded({extended:true}));
 const PORT=process.env.PORT||3000;
 const Userdata=require('./src/model/Userdata');
@@ -110,12 +110,7 @@ app.post('/signup',function(req,res){
                     let payload = {subject: req.body.email+req.body.password}
                     let token = jwt.sign(payload, 'secretKey')
                     Trainerdata.find({email:email},function(err,trainer) {
-                        if(trainer.approved){
-                          approved=true;
-                        }
-                        else{
-                          approved=false;
-                        }
+                        approved=trainer.approved;
                     })
                     res.status(200).send({tok:token,approval:approved})
                   }
