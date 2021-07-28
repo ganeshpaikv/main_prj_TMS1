@@ -50,7 +50,7 @@ courses:any;
   }
   
    getTrainers(){
-    return this.http.get('http://localhost:3000/requests')
+    return this.http.get('http://localhost:3000/adminhome/requests')
   };
   getTrainer(email:any){
     return this.http.get("http://localhost:3000/userhome/trainerprofile/"+email);
@@ -58,12 +58,13 @@ courses:any;
 
  
   AcceptTrainer(id:any){
-    return this.http.get("http://localhost:3000/requests/accept/"+id)
+    return this.http.get("http://localhost:3000/adminhome/requests/accept/"+id)
   }
   RejectTrainer(id:any){
-    return this.http.delete("http://localhost:3000/requests/delete/"+id)
+    return this.http.delete("http://localhost:3000/adminhome/requests/delete/"+id)
   }
 EditTrainer(trainer:any){
-  return this.http.put("http://localhost:3000/trainerprofile/edit",{"trainer":trainer});
+  return this.http.put("http://localhost:3000/userhome/trainerprofile/edit",trainer)
+  
 }
 }

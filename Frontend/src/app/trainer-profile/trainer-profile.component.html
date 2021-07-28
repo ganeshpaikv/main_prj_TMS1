@@ -1,11 +1,11 @@
 <body>
     <form class="form"(ngSubmit)="editdetails()">
-    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="container rounded bg-white">
  
       <div class="row">
-           <!-- <div class="col-md-3 border-right">
-              <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="../../assets/img/{{trainer.photo}}" name="photo" [(ngModel)]="trainer.photo" #photo="ngModel"><span class="font-weight-bold">{{trainer.name}}</span><span class="text-black-50">{{trainer.email}}</span><span> </span></div>
-          </div>  -->
+            <div class="col-md-3 border-right">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="../../assets/img/{{trainer.photo}}" name="photo"  ><span class="font-weight-bold">{{trainer.name}}</span><span class="text-black-50">{{trainer.email}}</span><span> </span></div>
+          </div>  
          
           <div class="col-md-5 border-right">
               <div class="p-3 py-5">
@@ -24,9 +24,9 @@
                       <!-- <div class="col-md-12"><label class="labels">Skill Set</label><input type="text" class="form-control" disabled  placeholder="{{trainer.skillset}}"  name="skillset" [(ngModel)]="trainer.skillset" #skillset="ngModel"></div> -->
                       <div class="col-md-12"><label class="labels">Current Company Name</label><input type="text" class="form-control" disabled  placeholder="{{trainer.company}}"  name="company" [(ngModel)]="trainer.company" #company="ngModel"></div>
                       <div class="col-md-12"><label class="labels">Current Designation</label><input type="text" class="form-control" disabled  placeholder="{{trainer.designation}}"  name="designation" [(ngModel)]="trainer.designation" #designation="ngModel"></div>
-                      <!-- <div class="col-md-12"><label class="labels">ICTAK Courses Handling</label>
+                       <div class="col-md-12"><label class="labels">ICTAK Courses Handling</label>
                         <input type="text" class="form-control" disabled  placeholder="{{trainer.ictakcourses}}"  name="ictakcourses" [(ngModel)]="trainer.ictakcourses" #courses="ngModel"> 
-                    </div>--->
+                    </div>
 
                   </div>
                   <div class="row mt-3">
@@ -42,14 +42,14 @@
           <div class="col-md-4">
               <div class="p-3 py-5">
                   <div class="d-flex justify-content-between align-items-center "><span>Edit Details</span><button type="submit" class="btn" style="background-color: blueviolet;">Save</button></div><br>
-                  <div class="col-md-12"><label class="labels">Skill set</label><input type="text" class="form-control" value="" name="skillset" [(ngModel)]="trainerup.skillset" #skillset="ngModel"></div> <br>
+                  <div class="col-md-12"><label class="labels">Skill set</label><input type="text" class="form-control" value="" name="skillset" [(ngModel)]="trainer.skillset" #skillset="ngModel"></div> <br>
                   <div class="col-md-12"><label for="inputCourses" class="labels">ICTAK Course handling</label>
-                    <ng-select id="for2" [items]="categories"  
+                    <ng-select  [items]="categories"  
                                bindLabel="name"  
                                name="ictakcourses" 
                                appendTo="body"    
                                [multiple]="true"  
-                               [(ngModel)]="trainerup.ictakcourses"
+                               [(ngModel)]="trainer.ictakcourses"
                                #ictakcourses="ngModel"
                                 required>  
                 </ng-select></div>

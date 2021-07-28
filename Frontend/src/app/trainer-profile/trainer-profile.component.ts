@@ -27,17 +27,15 @@ export class TrainerProfileComponent implements OnInit {
     employment:''
   }
   categories = [  
-    {id: 1, name: 'Full Stack Development'},  
-    {id: 2, name: 'Data Science and Analytics'},  
-    {id: 3, name: 'Robotic Process Automation'},  
+    {id:1, name: 'Full Stack Development'},  
+    {id:2,name: 'Data Science and Analytics'},  
+    {id:3, name: 'Robotic Process Automation'},  
 
   ]; 
   image: any; 
   Trainer:any
   
- trainerup={ skillset:'',
  
- ictakcourses:''}
 
   constructor(private trainerObj : TrainerService, private router:Router, private http : HttpClient) { }
 
@@ -55,9 +53,12 @@ export class TrainerProfileComponent implements OnInit {
 
   }
 editdetails(){
-  this.trainer.ictakcourses=JSON.stringify(this.trainer.ictakcourses);
+this.trainer.ictakcourses=JSON.stringify(this.trainer.ictakcourses);
+
+ 
   this.trainerObj.EditTrainer(this.trainer)
+  .subscribe((data)=>{console.log(data)})
   alert("Trainer updated");
   this.router.navigate(['profile']); 
 }
-}
+} 

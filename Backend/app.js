@@ -46,13 +46,13 @@ function verifyToken(req, res, next) {
 const userrouter=require("./src/routes/userRoutes")(verifyToken,storage)
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
 app.use('/userhome',userrouter);
-app.use('/adminhome',userrouter);
+app.use('/adminhome',adminrouter);
 app.use('/userhome/form',userrouter);
 app.use('/userhome/trainerprofile',userrouter);
 app.use('/userhome/trainerprofile/edit',userrouter);
 app.use('/adminhome/requests',adminrouter);
 app.use('/adminhome/requests/accept',adminrouter);
-app.use('adminhome/requests/delete', adminrouter);
+app.use('/adminhome/requests/delete', adminrouter);
 app.use('/adminhome/allocation',adminrouter);
 
 //signup call for backend//
@@ -109,12 +109,14 @@ app.post('/signup',function(req,res){
                   
                     let payload = {subject: req.body.email+req.body.password}
                     let token = jwt.sign(payload, 'secretKey')
+                    if(req.body.user.email!="tmsadmn@gmail.com"){
                     Trainerdata.findOne({email:email},function(err,trainer) {
                         approved=trainer.approved;
                         res.status(200).send({tok:token,approval:approved})
                     })
                     
-                  }
+                  }else{res.status(200).send({tok:token,approval:''})};}
+                
                   else{
                     res.status(401).send('Invalid credentials');
                   }
