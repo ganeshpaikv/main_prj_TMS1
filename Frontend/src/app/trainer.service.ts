@@ -18,7 +18,15 @@ export class TrainerService {
     ictakcourses:"",
     photo:"",
     ID:"",
-    employment:''
+    employment:'',
+    approved:'',
+    startdate:'',
+    enddate:'',
+    time:'',
+    coursename:'',
+    courseid:'',
+    batchid:'',
+    meetingvenue:''
   }
   
    User= {
@@ -66,4 +74,24 @@ courses:any;
 EditTrainer(trainer:any){
   return this.http.put("http://localhost:3000/trainerprofile/edit",{"trainer":trainer});
 }
+   newAllocation(trainer : any)
+  {
+    const formData = new FormData();
+    formData.append('startdate', trainer.startdate); 
+    formData.append('enddate', trainer.enddate); 
+    formData.append('time', trainer.time); 
+    formData.append('coursename', trainer.coursename); 
+    formData.append('courseid', trainer.courseid); 
+    formData.append('batchid', trainer.batchid ); 
+    formData.append('meetingvenue', trainer.meetingvenue ); 
+   
+    return this.http.post<any>('http://localhost:3000/adminhome/allocation',formData);
+    
+  }
+
+  getTrainer1(id:any){
+    return this.http.get("http://localhost:3000/adminhome/allocation/"+id);
+  };
+
+  
 }
