@@ -30,6 +30,15 @@ import { CalenderComponent } from './calender/calender.component';
 import { RequestComponent } from './request/request.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
+import { AllocationComponent } from './allocation/allocation.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +53,8 @@ import { TrainerProfileComponent } from './trainer-profile/trainer-profile.compo
     EnrollmentComponent,
     CalenderComponent,
     RequestComponent,
-    TrainerProfileComponent
+    TrainerProfileComponent,
+     AllocationComponent
    
   ],
   imports: [
@@ -59,6 +69,12 @@ import { TrainerProfileComponent } from './trainer-profile/trainer-profile.compo
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    MatInputModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatDividerModule,
     CalendarModule.forRoot({
       provide: DateAdapter,

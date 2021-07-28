@@ -1,0 +1,64 @@
+
+<br>
+<div class="container">
+<div class="my-custom-container">
+  <form #allocationForm="ngForm" (ngSubmit)="allocationForm.form.valid && verify1(allocationForm)">
+    <h2 class="head">Trainer Allocation Form</h2>
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <br>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Start date" type="text" name="startdate" [(ngModel)]="trainer.startdate"  required #startdate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="datepicker" placeholder="End date" type="text" name="enddate" [(ngModel)]="trainer.enddate"  required #enddate="ngModel">
+          <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker #datepicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput   placeholder="Time" type="text" name="time" [(ngModel)]="trainer.time"  required #time="ngModel">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput  placeholder="Course name" type="text" name="coursename" [(ngModel)]="trainer.coursename"  required #coursename="ngModel">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    
+    <mat-grid-tile>
+      <div class="controles-container">
+        <br>
+        <mat-form-field>
+          <input matInput  placeholder="Course ID" type="text" name="courseid" [(ngModel)]="trainer.courseid"  required #courseid="ngModel">
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput  placeholder="Batch ID" type="text" name="batchid" [(ngModel)]="trainer.batchid"  required #batchid="ngModel">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput   placeholder="Meeting link/venue" type="text" name="meetingvenue" [(ngModel)]="trainer.meetingvenue"  required #meetingvenue="ngModel">
+        </mat-form-field>
+    <br>
+  
+      
+        <br>
+        <div class="button-row">
+      <button mat-raised-button color="primary" width="120" height="40" [disabled]="allocationForm.form.invalid">Submit</button>
+      </div>
+       
+    </div>  
+      
+     </mat-grid-tile>
+
+     
+  </mat-grid-list>
+</form>
+</div>
+</div>
+
+  
