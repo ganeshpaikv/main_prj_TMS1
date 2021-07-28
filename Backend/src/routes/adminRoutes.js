@@ -164,9 +164,107 @@ function router(tokverify){
       
           });   
     
+         // Admin Trainer Profiles
     
+        adminrouter.get('/trainerprofiles',tokverify,function(req,res){
+          console.log("Trainer Profiles Page");
+          Trainerdata.find({"approved":true})
+          .then(function(trainers){
+              res.send(trainers);
+            })
+  
+        });
+  
+
+        adminrouter.delete('/trainerprofiles/delete/:id',tokverify,function(req,res){
+          const id = req.params.id;
+          Trainerdata.deleteOne({_id:id},(err,resp)=>{
+       if(err){
+           console.log(err);
+       }
+       else{
+         console.log("deleted successfully");
+         
+         }
+       res.send();
+   })
+
+});
+
+
+adminrouter.post('/trainerprofiles/edit/:id',tokverify,function(req,res){
+  const id = req.params.id;
+
+  var item = {
+    name:req.body.name,
+    phone:req.body.phone,
+    address:req.body.address,
+  qualification:req.body.qualification,
+  skillset:req.body.skillset,
+   company:req.body.company,
+  designation:req.body.designation,
+   ictakcourses:coursedata,
+  approved:true,
+  employment:''
+}
+
+  Trainerdata.findByIdAndUpdate(id,item,(err,resp)=>{
+if(err){
+   console.log(err);
+}
+else{
+ console.log("Updated the profile successfully");
+ 
+ }
+res.send();
+})
+
+});
+
+
+  // Search
+
+ adminrouter.get('/trainerprofiles/search/:name',tokverify,function(req,res){
+
+  var regex = new RegExp(req.params.name,'i');
+  Trainerdata.find({name:regex})
+  .then(function(trainers){
+    res.send(trainers);
+  })
+
+ });  
+ 
+ adminrouter.get('/trainerprofiles/search/:skillset',tokverify,function(req,res){
+
+  var regex = new RegExp(req.params.skillset,'i');
+  Trainerdata.find({skillset:regex})
+  .then(function(trainers){
+    res.send(trainers);
+  })
+
+ });  
+ 
+ adminrouter.get('/trainerprofiles/search/:coursedata',tokverify,function(req,res){
+
+  var regex = new RegExp(req.params.coursedata,'i');
+  Trainerdata.find({coursedata:regex})
+  .then(function(trainers){
+    res.send(trainers);
+  })
+
+ });  
     
+ adminrouter.get('/trainerprofiles/search/:employment',tokverify,function(req,res){
+
+  var regex = new RegExp(req.params.employment,'i');
+  Trainerdata.find({employment:regex})
+  .then(function(trainers){
+    res.send(trainers);
+  })
+
+ });  
     
+  
     
     
 return adminrouter;
