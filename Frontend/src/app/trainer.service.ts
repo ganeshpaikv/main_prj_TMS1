@@ -56,5 +56,25 @@ courses:any;
    return this.http.put("http://localhost:3000/update",trainer)
      .subscribe(data =>{console.log(data)})
   };
+  
+   deleteTrainer(id:any)
+  {
+
+    return this.http.delete("http://localhost:3000/adminhome/trainerprofiles/delete/"+id)
+
+  }
+
+  editTrainer(trainer:any)
+  {
+    return this.http.get("http://localhost:3000/trainerprofiles/edit/",trainer)
+    .subscribe(data =>{console.log(data)})
+  }
+
+  allocateTrainer(trainer:any)
+  {
+    return this.http.get("http://localhost:3000/trainerprofiles/allocate/",trainer)
+    
+  }
+
 
 }
