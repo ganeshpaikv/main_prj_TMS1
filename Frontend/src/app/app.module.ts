@@ -37,6 +37,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TrainerprofilesComponent } from './trainerprofiles/trainerprofiles.component';
 
 
 
@@ -54,7 +55,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CalenderComponent,
     RequestComponent,
     TrainerProfileComponent,
-     AllocationComponent
+     AllocationComponent,
+    TrainerprofilesComponent
    
   ],
   imports: [
