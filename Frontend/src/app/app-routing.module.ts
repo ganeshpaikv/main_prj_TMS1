@@ -8,7 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
 import { EnrollmentComponent } from './enrollment/enrollment.component';
+import { CalenderComponent } from './calender/calender.component';
 import { RequestComponent } from './request/request.component';
+import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
+import { AllocationComponent } from './allocation/allocation.component';
 
 const routes: Routes = [
   {path:'' , component:LoginComponent},
@@ -18,7 +21,10 @@ const routes: Routes = [
   {path:'signup' , component:SignupComponent},
    {path:'home' , canActivate: [AuthGuard], component:HomeComponent},
   { path: 'enrollment' , canActivate: [AuthGuard], component:EnrollmentComponent},
-  { path:'request' , component:RequestComponent}
+  {path:'calendar',component:CalenderComponent},
+  { path:'request' , component:RequestComponent},
+   {path: 'profile', component:TrainerProfileComponent},
+     {path:'allocation', component:AllocationComponent}
 ];
 
 @NgModule({

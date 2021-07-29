@@ -17,8 +17,22 @@ export class TrainerService {
     designation:"",
     ictakcourses:"",
     photo:"",
-    ID:""
+    ID:"",
+    employment:'',
+    approved:'',
+    startdate:'',
+    enddate:'',
+    time:'',
+    coursename:'',
+    courseid:'',
+    batchid:'',
+    meetingvenue:''
   }
+  
+   User= {
+    email: '',
+    password    : '',
+};
 courses:any;
   constructor(public http : HttpClient) { }
 
@@ -39,22 +53,53 @@ courses:any;
     formData.append('ictakcourses',  this.courses); 
     formData.append('photo', trainer.photo); 
     formData.append('ID', trainer.ID ); 
-    return this.http.post<any>('http://localhost:3000/form',formData);
+    return this.http.post<any>('http://localhost:3000/userhome/form',formData);
     
   }
   
    getTrainers(){
-    return this.http.get('http://localhost:3000/request')
+    return this.http.get('http://localhost:3000/adminhome/requests')
   };
-  getTrainer(id:any){
-    return this.http.get("http://localhost:3000/"+id);
+  getTrainer(email:any){
+    return this.http.get("http://localhost:3000/userhome/trainerprofile/"+email);
   };
+
 
   editTrainer(trainer:any)
   {   
     console.log(`editTrainer : ${trainer.name}`);
    return this.http.put("http://localhost:3000/update",trainer)
      .subscribe(data =>{console.log(data)})
+  }
+ 
+  AcceptTrainer(id:any){
+    return this.http.get("http://localhost:3000/adminhome/requests/accept/"+id)
+  }
+  RejectTrainer(id:any){
+    return this.http.delete("http://localhost:3000/adminhome/requests/delete/"+id)
+  }
+EditTrainer(trainer:any){
+  return this.http.put("http://localhost:3000/userhome/trainerprofile/edit",trainer)
+  
+}
+   newAllocation(trainer : any)
+  {
+    const formData = new FormData();
+    formData.append('startdate', trainer.startdate); 
+    formData.append('enddate', trainer.enddate); 
+    formData.append('time', trainer.time); 
+    formData.append('coursename', trainer.coursename); 
+    formData.append('courseid', trainer.courseid); 
+    formData.append('batchid', trainer.batchid ); 
+    formData.append('meetingvenue', trainer.meetingvenue ); 
+   
+    return this.http.post<any>('http://localhost:3000/adminhome/allocation',formData);
+    
+  }
+
+  getTrainer1(id:any){
+    return this.http.get("http://localhost:3000/adminhome/allocation/"+id);
+
   };
   
    deleteTrainer(id:any)
@@ -73,4 +118,5 @@ courses:any;
   }
 
 
+  
 }

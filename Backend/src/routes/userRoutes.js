@@ -22,8 +22,8 @@ app.use(express.urlencoded({extended:true}));
 function router(tokverify,storage){
     coursedata='';
    id_final='';
-        
-    userrouter.post('/',tokverify,(req,res)=>{
+     coursedata2=''; 
+    userrouter.post('/form',tokverify,(req,res)=>{
       
         
             
@@ -64,7 +64,9 @@ function router(tokverify,storage){
                      designation:req.body.designation,
                       ictakcourses:coursedata,
                         photo:req.file.filename,
-                     ID:id_final
+                     ID:id_final,
+                     approved:false,
+                     employment:''
                  }
               
                 var Trainer=Trainerdata(item);
@@ -86,6 +88,32 @@ function router(tokverify,storage){
      })
     });
   });
+  userrouter.get('/trainerprofile/:email',tokverify,(req,res)=>{
+    const email=req.params.email;
+    
+    Trainerdata.findOne({$and:[{"email":email},{"approved":true}]})
+    .then(function(trainer){
+      res.send(trainer);
+    })
+  }
+  )
+  userrouter.put('/trainerprofile/edit',tokverify,(req,res)=>{
+   coursedata2='';
+    objcourse2=JSON.parse(req.body.ictakcourses);
+                for(i=0;i<objcourse2.length;i++){
+                    if(i==0){
+                    coursedata2=coursedata2.concat(objcourse2[i].name)}
+                    else{
+                        coursedata2=coursedata2.concat(',',objcourse2[i].name);
+                    }
+                }
+    Trainerdata.findByIdAndUpdate({"_id":req.body._id},{$set:{"skillset":req.body.skillset,
+  "ictakcourses":coursedata2}})
+   .then(function(){
+     res.send();
+   })
+    
+  })
 return userrouter;
 }
 module.exports=router;

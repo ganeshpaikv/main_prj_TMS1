@@ -23,10 +23,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalenderComponent } from './calender/calender.component';
 import { RequestComponent } from './request/request.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
+import { AllocationComponent } from './allocation/allocation.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 @NgModule({
   declarations: [
@@ -39,7 +51,10 @@ import { MatDividerModule } from '@angular/material/divider';
     FooterComponent,
     UserComponent,
     EnrollmentComponent,
-    RequestComponent
+    CalenderComponent,
+    RequestComponent,
+    TrainerProfileComponent,
+     AllocationComponent
    
   ],
   imports: [
@@ -54,8 +69,18 @@ import { MatDividerModule } from '@angular/material/divider';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
-    MatDividerModule
-
+    MatInputModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
+  
   ],
   providers: [AuthService, AuthGuard, TrainerService,
     {

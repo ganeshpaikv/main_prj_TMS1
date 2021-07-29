@@ -29,8 +29,9 @@ submitted =false;
   login(){   
       this._auth.loginUser(this.User)
       .subscribe(res=>{
-          localStorage.setItem('token', res.token)          
-          //localStorage.setItem('currentUser', res.users.firstname)
+          localStorage.setItem('token', res.tok)   
+          localStorage.setItem('Approvalstatus', res.approval)         
+          localStorage.setItem('currentUser', this.User.email);
           
           if (this.User.email=="tmsadmn@gmail.com")
           this._router.navigate(['/admin'])

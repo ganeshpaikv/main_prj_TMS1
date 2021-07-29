@@ -7,10 +7,11 @@ const jwt=require('jsonwebtoken');
 const multer=require('multer');
 app.use(express.json());
 app.use(cors());
-
+var approved=new Boolean();
 app.use(express.urlencoded({extended:true}));
 const PORT=process.env.PORT||3000;
 const Userdata=require('./src/model/Userdata');
+const Trainerdata=require('./src/model/Trainerdata');
 const storage = multer.diskStorage({
     
   destination : function(req, file, cb) {
@@ -44,7 +45,16 @@ function verifyToken(req, res, next) {
 //Router declarations//
 const userrouter=require("./src/routes/userRoutes")(verifyToken,storage)
 const adminrouter=require("./src/routes/adminRoutes")(verifyToken)
-app.use('/form',userrouter);
+app.use('/userhome',userrouter);
+app.use('/adminhome',adminrouter);
+app.use('/userhome/form',userrouter);
+app.use('/userhome/trainerprofile',userrouter);
+app.use('/userhome/trainerprofile/edit',userrouter);
+app.use('/adminhome/requests',adminrouter);
+app.use('/adminhome/requests/accept',adminrouter);
+app.use('/adminhome/requests/delete', adminrouter);
+app.use('/adminhome/allocation',adminrouter);
+
 //signup call for backend//
 app.post('/signup',function(req,res){
   pass_hash = Bcrypt.hashSync(req.body.user.password, 10); //password hashing//
@@ -99,8 +109,14 @@ app.post('/signup',function(req,res){
                   
                     let payload = {subject: req.body.email+req.body.password}
                     let token = jwt.sign(payload, 'secretKey')
-                    res.status(200).send({token})
-                  }
+                    if(req.body.user.email!="tmsadmn@gmail.com"){
+                    Trainerdata.findOne({email:email},function(err,trainer) {
+                        approved=trainer.approved;
+                        res.status(200).send({tok:token,approval:approved})
+                    })
+                    
+                  }else{res.status(200).send({tok:token,approval:''})};}
+                
                   else{
                     res.status(401).send('Invalid credentials');
                   }
