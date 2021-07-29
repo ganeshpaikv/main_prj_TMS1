@@ -52,7 +52,7 @@ courses:any;
 
   editTrainer(trainer:any)
   {   
-    console.log(`editBook : ${trainer.name}`);
+    console.log(`edittrainer : ${trainer.name}`);
    return this.http.put("http://localhost:3000/update",trainer)
      .subscribe(data =>{console.log(data)})
   };
@@ -64,11 +64,7 @@ courses:any;
 
   }
 
-  editTrainer(trainer:any)
-  {
-    return this.http.get("http://localhost:3000/trainerprofiles/edit/",trainer)
-    .subscribe(data =>{console.log(data)})
-  }
+ 
 
   allocateTrainer(trainer:any)
   {
