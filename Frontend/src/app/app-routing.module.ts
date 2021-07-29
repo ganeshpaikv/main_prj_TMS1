@@ -12,6 +12,7 @@ import { CalenderComponent } from './calender/calender.component';
 import { RequestComponent } from './request/request.component';
 import { TrainerProfileComponent } from './trainer-profile/trainer-profile.component';
 import { AllocationComponent } from './allocation/allocation.component';
+import { TrainerprofilesComponent } from './trainerprofiles/trainerprofiles.component';
 
 const routes: Routes = [
   {path:'' , component:LoginComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path:'calendar',component:CalenderComponent},
   { path:'request' , component:RequestComponent},
    {path: 'profile', component:TrainerProfileComponent},
-     {path:'allocation', component:AllocationComponent}
+     {path:'allocation', component:AllocationComponent},
+  {path: 'trainerprofiles',component:TrainerprofilesComponent}
 ];
 
 @NgModule({
