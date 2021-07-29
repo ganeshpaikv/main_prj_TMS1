@@ -1,0 +1,35 @@
+<br>
+<br>
+
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+      
+<div *ngFor ="let trainer of trainersdata">
+<div class="wrapper">
+    <div class="left">
+        <img src="../../assets/img/{{trainer.photo}}" alt="user" width="100">
+        <h4>{{trainer.name}}</h4>
+         <p>{{trainer.designation}}</p>
+    </div>
+    <div class="right">
+      <p >Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :&nbsp; {{trainer.name}}</p>
+      <p>Email &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; {{trainer.email}}</p>
+      <p >Phone &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; {{trainer.phone}}</p>
+      <p  >Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp; {{trainer.address}}</p>
+      <p >Highest Qualification &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; {{trainer.qualification}}</p>
+      <p >Skill Set &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp; {{trainer.skillset}}</p>
+      <p  >Current Company Name &nbsp;: &nbsp;{{trainer.company}}</p>
+      <p >Current Designation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;{{trainer.designation}}</p>
+      <p >ICTAK Courses Handling &nbsp;: &nbsp; {{trainer.ictakcourses}}</p>
+      <p  >ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;{{trainer.ID}}</p>
+      <br>
+      <div>
+        <button  (click)="deleteTrainer(trainer)" >Delete </button>          &nbsp;&nbsp;
+        <button (click)="editTrainer(trainer)" >Edit</button>  &nbsp;&nbsp;
+        <button (click)="allocateTrainer(trainer)"> Allocate</button>
+       
+        
+        
+      
+    </div>
+</div>
+</div>
