@@ -52,7 +52,7 @@ courses:any;
 
   editTrainer(trainer:any)
   {   
-    console.log(`edittrainer : ${trainer.name}`);
+    console.log(`editTrainer : ${trainer.name}`);
    return this.http.put("http://localhost:3000/update",trainer)
      .subscribe(data =>{console.log(data)})
   };
