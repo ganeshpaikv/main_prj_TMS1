@@ -117,6 +117,12 @@ EditTrainer(trainer:any){
     return this.http.get("http://localhost:3000/trainerprofiles/allocate/",trainer)
     
   }
+  
+  
+  getTrainer2(){
+    return this.http.get("http://localhost:3000/adminhome/trainerprofiles" );
+
+  };
 
 
   
