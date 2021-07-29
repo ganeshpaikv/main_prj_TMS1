@@ -52,11 +52,10 @@ export class TrainerprofilesComponent implements OnInit {
     constructor(public trainersObj : TrainerService, private router:Router,private http : HttpClient, public _auth :AuthService, ) { }
   
     ngOnInit(): void {
-    let TrainerId = localStorage.getItem("deleteAuthorId");
-    console.log('inside delete init deleteTrainerId ${trainer._id}');
-    this.trainersObj.getTrainer(TrainerId)
+    let TrainerId = localStorage.getItem("deleteTrainerId");
+    this.trainersObj.getTrainer2()
     .subscribe((trainer)=>{
-      this.trainersdata = JSON.parse(JSON.stringify(trainer));
+      this.trainersdata = trainer;
       console.log(this.trainersdata);
   });
 }
