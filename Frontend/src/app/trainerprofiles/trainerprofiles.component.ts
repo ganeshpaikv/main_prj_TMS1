@@ -60,7 +60,7 @@ export class TrainerprofilesComponent implements OnInit {
   });
 }
   
-  deleteTrainer(){
+  deleteTrainer(trainer:any){
     let TrainerId = localStorage.getItem("deleteAuthorId");
     console.log('inside delete function deleteTrainerId ${trainer._id}');
     this.trainersObj.getTrainer(TrainerId);
