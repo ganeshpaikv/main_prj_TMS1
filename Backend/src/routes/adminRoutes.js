@@ -222,47 +222,58 @@ res.send();
 });
 
 
-  // Search
-
- adminrouter.get('/trainerprofiles/search/:name',tokverify,function(req,res){
-
-  var regex = new RegExp(req.params.name,'i');
-  Trainerdata.find({name:regex})
-  .then(function(trainers){
-    res.send(trainers);
-  })
-
- });  
+//   Search
  
- adminrouter.get('/trainerprofiles/search/:skillset',tokverify,function(req,res){
+  adminrouter.get('/trainerprofiles/search',tokverify,function(req,res){
 
-  var regex = new RegExp(req.params.skillset,'i');
-  Trainerdata.find({skillset:regex})
+  var regex = new RegExp(req.body.search.text,'i');
+  
+  Trainerdata.find({$or: [{name:regex}, {skillset:regex},{coursedata:regex},{employment:regex}]})
+  
   .then(function(trainers){
     res.send(trainers);
   })
 
  });  
+//  adminrouter.get('/trainerprofiles/search/:name',tokverify,function(req,res){
+
+//   var regex = new RegExp(req.params.name,'i');
+//   Trainerdata.find({name:regex})
+//   .then(function(trainers){
+//     res.send(trainers);
+//   })
+
+//  });  
  
- adminrouter.get('/trainerprofiles/search/:coursedata',tokverify,function(req,res){
+//  adminrouter.get('/trainerprofiles/search/:skillset',tokverify,function(req,res){
 
-  var regex = new RegExp(req.params.coursedata,'i');
-  Trainerdata.find({coursedata:regex})
-  .then(function(trainers){
-    res.send(trainers);
-  })
+//   var regex = new RegExp(req.params.skillset,'i');
+//   Trainerdata.find({skillset:regex})
+//   .then(function(trainers){
+//     res.send(trainers);
+//   })
 
- });  
+//  });  
+ 
+//  adminrouter.get('/trainerprofiles/search/:coursedata',tokverify,function(req,res){
+
+//   var regex = new RegExp(req.params.coursedata,'i');
+//   Trainerdata.find({coursedata:regex})
+//   .then(function(trainers){
+//     res.send(trainers);
+//   })
+
+//  });  
     
- adminrouter.get('/trainerprofiles/search/:employment',tokverify,function(req,res){
+//  adminrouter.get('/trainerprofiles/search/:employment',tokverify,function(req,res){
 
-  var regex = new RegExp(req.params.employment,'i');
-  Trainerdata.find({employment:regex})
-  .then(function(trainers){
-    res.send(trainers);
-  })
+//   var regex = new RegExp(req.params.employment,'i');
+//   Trainerdata.find({employment:regex})
+//   .then(function(trainers){
+//     res.send(trainers);
+//   })
 
- });  
+//  });  
     
   
     
