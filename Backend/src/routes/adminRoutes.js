@@ -224,7 +224,7 @@ res.send();
 
 //   Search
  
-  adminrouter.get('/trainerprofiles/search',tokverify,function(req,res){
+  adminrouter.put('/trainerprofiles/search',tokverify,function(req,res){
 
   var regex = new RegExp(req.body.search.text,'i');
   
